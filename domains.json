@@ -47,7 +47,8 @@
       "food": "Everyday food handling: boil water, make tea, store leftovers, use a microwave.",
       "home": "Basic home upkeep: change a lightbulb, unclog a drain, sort recycling.",
       "social": "Everyday social scripts: order at a restaurant, pay at a cashier, wait in line, answer a call.",
-      "errands": "Out-of-home basics: mail a letter, use an ATM, refuel a car, use a vending machine."
+      "errands": "Out-of-home basics: mail a letter, use an ATM, refuel a car, use a vending machine.",
+      "play": "Fun and leisure: paper airplanes, blanket forts, campfires, kites, stone skipping."
     }
   },
   "embodied": {
