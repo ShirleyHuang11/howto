@@ -21,7 +21,7 @@
 ## 🐘 How do you put an elephant into a fridge?
 
 <div align="center">
-<img src="assets/elephant-in-fridge.svg" alt="An elephant crammed into a fridge, trunk sticking out the door that won't close, captioned: F1 elephant exceeds fridge capacity, acquire a larger fridge or a smaller elephant" width="440">
+<img src="assets/elephant-in-fridge.png" alt="An elephant crammed into a fridge with the door held open" width="420">
 </div>
 
 Everyone knows this one:
