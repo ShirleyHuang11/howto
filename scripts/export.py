@@ -141,12 +141,12 @@ def main():
     args = ap.parse_args()
     recipes = collect(args.paths)
     if args.format == "json":
-        json.dump(recipes, sys.stdout, indent=2, ensure_ascii=False)
+        json.dump(recipes, sys.stdout, indent=2, ensure_ascii=False, default=str)
         print()
     else:
         conv = to_sft if args.format == "sft" else to_eval
         for r in recipes:
-            print(json.dumps(conv(r), ensure_ascii=False))
+            print(json.dumps(conv(r), ensure_ascii=False, default=str))
     print("exported %d recipes as %s" % (len(recipes), args.format), file=sys.stderr)
 
 
