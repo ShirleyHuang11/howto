@@ -1,15 +1,31 @@
 <div align="center">
 
-# 📖 howto
+```
+        ┌─────────────────────┐
+        │  ╔═══════════════╗  │
+        │  ║   ┌--┐        ║  │
+        │  ║  (o  o)  ┌─┐  ║  │
+        │  ║  /|__|\__│ │  ║  │      📖 howto
+        │  ║   |  |   └─┘  ║  │
+        │  ║  _|  |_       ║  │      one elephant, chilled ✓
+        │  ╚═══════════════╝  │
+        └─────────────────────┘
+          the fridge, closed ✓
+```
 
-**An open library of everyday procedural knowledge —<br>structured how-to recipes for training agents and robots.**
+# howto
+
+### An open library of everyday procedural knowledge
+
+**structured how-to recipes for training agents 🤖 and robots 🦾 — readable by humans 🧑**
 
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Recipes](https://img.shields.io/badge/recipes-76-brightgreen.svg)](domains.json)
+[![Recipes](https://img.shields.io/badge/recipes-91-brightgreen.svg)](domains.json)
+[![Domains](https://img.shields.io/badge/domains-12-blueviolet.svg)](domains.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](CONTRIBUTING.md)
 
-*for agents 🤖 · for robots 🦾 · for humans 🧑*
+[**Why**](#-why-this-exists) · [**What's inside**](#%EF%B8%8F-whats-inside) · [**Quick start**](#-quick-start) · [**Design principles**](#-design-principles) · [**Contributing**](#-contributing)
 
 </div>
 
@@ -19,9 +35,7 @@
 
 Easy — everyone knows this one:
 
-> 1. Open the fridge.
-> 2. Put the elephant in.
-> 3. Close the fridge.
+> 1. Open the fridge. 2. Put the elephant in. 3. Close the fridge.
 
 That's how most datasets think tasks work. Here's how `howto` writes it:
 
@@ -61,34 +75,60 @@ The schema turns prose into training substrate. One corpus yields, simultaneousl
 | 🧪 Contamination-controlled evals | Held-out recipes and locale variants |
 | 🦾 Robot task plans & sim task generation | Embodied `objects` / `affordances` / `workspace` / `safety` |
 
+---
+
+## ⚡ Quick start
+
 ```bash
-python3 scripts/export.py --format sft   # instruction-tuning pairs (JSONL)
-python3 scripts/export.py --format eval  # task specs with success criteria (JSONL)
-python3 scripts/export.py --format json  # full structured recipes
+git clone https://github.com/ShirleyHuang11/howto.git && cd howto
+
+./scripts/validate.sh                    # ✅ validate every recipe against the schema
+python3 scripts/stats.py                 # 📊 per-domain coverage dashboard
+python3 scripts/export.py --format sft   # 🎓 instruction-tuning pairs (JSONL)
+python3 scripts/export.py --format eval  # 🧪 task specs with success criteria (JSONL)
+python3 scripts/export.py --format json  # 📦 full structured recipes
 ```
+
+Or just read one: [`transit/ride-a-subway.md`](transit/ride-a-subway.md) · [`embodied/kitchen/load-a-dishwasher.md`](embodied/kitchen/load-a-dishwasher.md) · [`daily/social/pay-at-a-cashier.md`](daily/social/pay-at-a-cashier.md)
 
 ---
 
 ## 🗂️ What's inside
 
-One task = one markdown file, separated by domain ([`domains.json`](domains.json) is the registry):
-
-| Track | Domains | Examples |
-|---|---|---|
-| 🧠 **Common sense** | `daily/` — self-care · food · home · social · errands | brush your teeth · boil water · do the laundry · wait in line · use an ATM · get a haircut |
-| 🦾 **Robot** | `embodied/` — kitchen · household · mobility · care | make drip coffee · load a dishwasher · fold a t-shirt · open a door · use an elevator · tidy a room |
-| 💻 **Digital** | `accounts/` `shopping/` `digital/` `finance/` | create an account · enable 2FA · buy & return a product · dispute a charge · back up your files |
-| 🚇 **Physical & services** | `transit/` `travel/` `communication/` `government/` `healthcare/` `housing/` | ride a subway · book a flight · send a package · renew a passport · refill a prescription |
-
-Every recipe carries the same skeleton:
+One task = one markdown file, separated by domain ([`domains.json`](domains.json) is the registry). Every recipe shares one skeleton:
 
 ```
-Goal → Preconditions → Steps (with → *Expect:* after every step)
+Goal → Preconditions → Steps (every step ends with → *Expect:* …)
 → Decision points → Failure modes & recovery → Verification
-→ Variations (locale/platform) → Safety & privacy
+→ Variations (locale/platform) → Safety & privacy (⚠️ irreversible steps inline)
 ```
 
-Embodied recipes add robot frontmatter that compiles into simulator tasks:
+<details open>
+<summary><b>🧠 Common sense — <code>daily/</code></b> (the largest track: what everyone knows and no one wrote down)</summary>
+<br>
+
+| Subdomain | Recipes |
+|---|---|
+| `self-care/` | brush your teeth · floss · shower · tie shoelaces · bedtime · trim nails · dress for the weather |
+| `food/` | boil water · make tea · cook rice · fry an egg · sandwich · cut an onion · microwave · instant noodles · pack a lunch · store leftovers · read food labels |
+| `home/` | do the laundry · make a bed · sweep & mop · vacuum · clean a bathroom · sort recycling · unclog a drain · change a lightbulb · change batteries |
+| `social/` | pay at a cashier · wait in line · order at a restaurant · split a bill · answer a phone call · greet a neighbor · give directions · ask for help in a store · small talk · borrow & return |
+| `errands/` | use an ATM · mail a letter · refuel a car · vending machine · self-checkout · buy groceries · get a haircut · public library |
+
+</details>
+
+<details>
+<summary><b>🦾 Robot track — <code>embodied/</code></b> (recipes that compile into simulator tasks)</summary>
+<br>
+
+| Subdomain | Recipes |
+|---|---|
+| `kitchen/` | make drip coffee · load a dishwasher · set a table · store groceries · make toast |
+| `household/` | fold a t-shirt · water houseplants · take out the trash · tidy a room |
+| `mobility/` | open a door · use an elevator · carry & deliver · cross a street |
+| `care/` | fetch an item for a person |
+
+Embodied frontmatter specifies the sim scene:
 
 ```yaml
 objects: [dishwasher, plates, cutlery, detergent-pod]
@@ -97,7 +137,25 @@ workspace: kitchen
 safety: {sharp_objects: true, fragile: [glasses], human_proximity: pause}
 ```
 
-📊 Live coverage: `python3 scripts/stats.py`
+</details>
+
+<details>
+<summary><b>💻 Digital — <code>accounts/</code> <code>shopping/</code> <code>digital/</code> <code>finance/</code></b></summary>
+<br>
+
+create an account · log in · enable 2FA · recover a password · delete an account · security review · buy & return a product · track a delivery · compare before buying · install an app · unsubscribe · back up files · connect to wifi · update safely · pay a bill · dispute a charge · send money to a friend
+
+</details>
+
+<details>
+<summary><b>🚇 Physical & services — <code>transit/</code> <code>travel/</code> <code>communication/</code> <code>government/</code> <code>healthcare/</code> <code>housing/</code></b></summary>
+<br>
+
+ride a subway · take a bus · hail a rideshare · navigate with maps · book a flight · check in · book a hotel · send a package · schedule a meeting · renew a passport · book a doctor's appointment · refill a prescription · set up utilities
+
+</details>
+
+📊 Live coverage anytime: `python3 scripts/stats.py`
 
 ---
 
@@ -111,25 +169,18 @@ safety: {sharp_objects: true, fragile: [glasses], human_proximity: pause}
 
 ---
 
-## 🚀 Using the corpus
-
-- 📖 **Read it** — it's a clean, ad-free life manual.
-- 🔎 **Retrieve it** — chunk recipes into an agent's skill memory.
-- 🎓 **Train on it** — `export.py --format sft` for planning traces.
-- 🧪 **Build evals from it** — `export.py --format eval`; `status: verified` recipes have passed agent-executability testing.
-- 🦾 **Compile sim tasks from it** — embodied frontmatter specifies scene, objects, and success predicates.
-
----
-
 ## 🤝 Contributing
 
-One recipe = one markdown file = one PR. Start from [`TEMPLATE.md`](TEMPLATE.md), read [CONTRIBUTING.md](CONTRIBUTING.md), validate before pushing:
+One recipe = one markdown file = one PR.
 
-```bash
-./scripts/validate.sh
-```
+1. Copy [`TEMPLATE.md`](TEMPLATE.md) into the right domain directory
+2. Write the procedure you actually know — original content only
+3. `./scripts/validate.sh` until green ✅
+4. Open the PR
 
-The short rules: original content only · every step needs an *Expect:* · verification must be checkable · irreversible steps get ⚠️ · embodied recipes need the robot frontmatter. **Locale expertise is especially welcome** — recipes for how things work in *your* city make agents useful beyond the defaults.
+The short rules: every step needs an *Expect:* · verification must be checkable · irreversible steps get ⚠️ · embodied recipes need the robot frontmatter. Full rules in [CONTRIBUTING.md](CONTRIBUTING.md).
+
+**🌍 Locale expertise is especially welcome** — recipes for how things work in *your* city make agents useful beyond the defaults.
 
 ---
 
@@ -137,6 +188,8 @@ The short rules: original content only · every step needs an *Expect:* · verif
 
 📜 Code: [MIT](LICENSE) · Content: [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
 
-*Now you know how to put the elephant in the fridge. The giraffe is a different recipe —<br>its Preconditions include "remove the elephant first."* 🦒
+*Now you know how to put an elephant in a fridge. The giraffe is a different recipe —<br>its Preconditions include "remove the elephant first."* 🦒
+
+**⭐ Star this repo if your agent ever confidently walked the wrong way out of a subway station.**
 
 </div>
