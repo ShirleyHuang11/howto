@@ -24,12 +24,12 @@ An incorrect, fraudulent, or undelivered-goods charge on your card is formally d
 ## Steps
 
 1. **Classify the charge.** [BRANCH: fraud (you never transacted) → skip to step 3 | merchant error (wrong amount, duplicate, goods not delivered/not as described) → step 2] Decode the merchant string first — many "unknown" charges are legitimate with unfamiliar billing names; search the string before crying fraud. → *Expect:* a confident classification.
-2. **Attempt merchant resolution and document it.** Contact merchant support, state the problem, request a refund; save the ticket/emails and give them the stated response window. → *Expect:* either a refund (done — verify it posts, skip to step 7) or a documented refusal/non-response, which the dispute will require.
+2. **Attempt merchant resolution and document it.** Contact merchant support, state the problem, request a refund; save the ticket/emails and give them the stated response window. → *Expect:* either a refund (done once it posts on a statement; no dispute is filed) or a documented refusal/non-response, which the dispute will require.
 3. **For fraud: freeze the card immediately.** In the banking app: lock/freeze the card, then request a replacement. → *Expect:* card locked; further charges impossible.
 4. **Open the dispute with the issuer.** Banking app/site → the transaction → "Dispute charge", or call the number on the card. Provide the classification, the story, and upload the evidence from steps 1–2. → *Expect:* a dispute case number and a stated timeline.
 5. **Answer follow-up requests promptly.** Issuers may mail/message questionnaires; missing their deadlines forfeits the dispute. → *Expect:* every issuer request answered within its window; case shows "under review".
 6. **Track the provisional credit.** Many issuers credit the amount provisionally during investigation. → *Expect:* a provisional credit line on the statement (not guaranteed in all jurisdictions).
-7. **Receive the outcome.** ⚠️ *Irreversible:* a resolved-in-your-favor dispute can still be reversed if the merchant provides counter-evidence — keep your evidence until the final resolution notice, not just the first credit. → *Expect:* written resolution: permanent credit, or rejection with reasons.
+7. **Receive the outcome.** *Note:* a first credit is not final. A resolved-in-your-favor dispute can still be reversed if the merchant provides counter-evidence, so keep your evidence until the written final-resolution notice. → *Expect:* written resolution: permanent credit, or rejection with reasons.
 8. **If rejected and you disagree: escalate.** Request the merchant's counter-evidence, rebut in writing, and if the issuer won't move, complain to the financial regulator/ombudsman for your jurisdiction. → *Expect:* an escalation case with its own timeline.
 
 ## Decision points
@@ -46,7 +46,7 @@ An incorrect, fraudulent, or undelivered-goods charge on your card is formally d
 
 ## Verification
 
-The dispute case shows final resolution; a permanent credit for the full disputed amount appears on a statement (or you accepted a reasoned rejection); and for fraud cases, the compromised card is dead and its recurring billers migrated.
+Either the merchant's refund posted on a statement with no dispute needed, or the dispute case shows final resolution: a permanent credit for the full disputed amount (or a reasoned rejection you accepted). For fraud cases, the compromised card is dead and its recurring billers migrated.
 
 ## Variations
 
@@ -55,4 +55,4 @@ The dispute case shows final resolution; a permanent credit for the full dispute
 
 ## Safety & privacy
 
-Medium risk. Never share the full card number in dispute correspondence (issuers use the last 4); beware follow-up scam calls "from the fraud department" — hang up and call the number on the card (`daily/answer-a-phone-call` rule 5).
+Medium risk. Never share the full card number in dispute correspondence (issuers use the last 4). Beware follow-up scam calls "from the fraud department": hang up and call the number on the card (`daily/social/answer-a-phone-call` step 5).

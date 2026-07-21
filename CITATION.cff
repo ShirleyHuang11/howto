@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use this corpus, please cite it as below."
+title: "howto: an open library of everyday procedural knowledge for training agents and robots"
+authors:
+  - name: "howto contributors"
+repository-code: "https://github.com/ShirleyHuang11/howto"
+license: MIT
+year: 2026

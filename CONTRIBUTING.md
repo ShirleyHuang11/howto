@@ -1,7 +1,8 @@
 # Contributing a recipe
 
 One task = one markdown file in its domain directory. Copy `TEMPLATE.md`, fill every
-required section, and open a PR. CI runs `scripts/validate.sh` on every PR.
+required section, run `./scripts/validate.sh` locally until green, and open a PR.
+The frontmatter is formally specified in `schema/recipe.schema.json`.
 
 ## Rules
 
@@ -32,11 +33,30 @@ required section, and open a PR. CI runs `scripts/validate.sh` on every PR.
 
 ## Status ladder
 
-- `draft` — passes CI schema validation.
+- `draft` — passes schema validation.
 - `reviewed` — a domain reviewer confirmed correctness and completeness.
 - `verified` — an agent following only the recipe completed the task in a real or
   simulated environment. Verified recipes carry evidential weight for training; do not
   self-assign this status.
+
+**How recipes get promoted:** `reviewed` is granted by a PR from a second person that
+flips the status field and includes a short checklist comment (steps correct, Expect
+clauses realistic, failure modes real, verification checkable). `verified` requires
+attaching evidence to the PR: an agent transcript, log, or sim run showing the task
+completed from the recipe alone. Volunteering to review or verify existing recipes is
+as valuable as writing new ones.
+
+## Wanted
+
+The corpus is growing toward 200 recipes. High-value contributions right now:
+
+- **Locale variants** for existing recipes (`jp-tokyo`, `cn-beijing`, `de-berlin`,
+  `in-mumbai`, your city): add a Variations entry or a locale to the frontmatter with
+  what actually differs. Beginner-friendly.
+- **Verification evidence** for any recipe you can test (see promotion above).
+- **Multimodal assets**: a diagram or photo for a step you know well (rule 9 below).
+- **New recipes** in the thinnest domains: `government/`, `healthcare/`, `housing/`,
+  `communication/`, and `embodied/care/`.
 
 ## Local validation
 

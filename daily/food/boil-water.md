@@ -24,7 +24,7 @@ A container of water is brought to a full boil and is available for use (tea, co
 
 ## Steps
 
-1. **Choose the method for the amount needed.** [BRANCH: electric kettle (fastest, ≤ its max line) | stovetop pot (any volume) | microwave (single cup, see Safety)] → *Expect:* container capacity ≥ needed volume with ≥ 2 cm headroom.
+1. **Choose the method for the amount needed.** [BRANCH: electric kettle (fastest, ≤ its max line) | stovetop pot (any volume) | microwave (single cup only — see Variations for the superheating precautions)] → *Expect:* container capacity ≥ needed volume with ≥ 2 cm headroom.
 2. **Fill with cold tap water to the needed level.** Kettle: between MIN and MAX marks. Pot: no more than 2/3 full. → *Expect:* water level within the safe marks; outside of the container is dry.
 3. **Start heating.** Kettle: seat it on its base, close the lid, press the switch. Stovetop: pot centered on the burner, lid on, burner to high. → *Expect:* kettle switch light on / burner flame or coil visibly on; faint heating sound builds within ~1 min.
 4. **Wait, staying within earshot.** Do not leave the building with a stove on. → *Expect:* progression of sound: quiet → hissing → rolling rumble; steam appears from the spout or lid edge.

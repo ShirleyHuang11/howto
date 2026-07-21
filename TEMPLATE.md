@@ -6,7 +6,7 @@ locale: [generic]                    # generic first; add variants like us-nyc, 
 interface: physical                  # physical | web | mobile-app | phone-call | mixed
 difficulty: basic                    # basic | intermediate | advanced
 est_time: 10min
-risk: low                            # low | medium (money/identity involved) | high (irreversible)
+risk: low                            # low | medium (money/identity, or meaningful physical hazard) | high (irreversible loss or serious injury risk)
 prerequisites: []                    # recipe names (e.g. accounts/log-in) or capability tags
 status: draft                        # draft | reviewed | verified
 last_verified: 2026-07-20

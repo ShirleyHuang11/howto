@@ -8,11 +8,11 @@
 
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Recipes](https://img.shields.io/badge/recipes-100-brightgreen.svg)](domains.json)
+[![Recipes](https://img.shields.io/badge/recipes-142-brightgreen.svg)](INDEX.md)
 [![Domains](https://img.shields.io/badge/domains-12-blueviolet.svg)](domains.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](CONTRIBUTING.md)
 
-[**Why**](#-why-this-exists) · [**What's inside**](#%EF%B8%8F-whats-inside) · [**Quick start**](#-quick-start) · [**Design principles**](#-design-principles) · [**Contributing**](#-contributing)
+[**Why**](#why) · [**What's inside**](#inside) · [**Quick start**](#quickstart) · [**Roadmap**](#roadmap) · [**Contributing**](#contributing) · [**Citing**](#citing)
 
 </div>
 
@@ -30,59 +30,75 @@ That is how most datasets think tasks work. Here is how `howto` writes it:
 ## Steps
 1. **Open the fridge.** → *Expect:* door open, shelves visible, light on.
 2. **Insert the elephant.** [BRANCH: elephant does not fit → F1]
-   - ⚠️ *Irreversible:* obtain the elephant's consent before this step.
 3. **Close the fridge.** → *Expect:* door latched; no trunk protruding.
 
 ## Failure modes & recovery
 - **F1 Elephant exceeds fridge capacity:** acquire a larger fridge, or a smaller elephant.
-- **F2 Door won't latch:** check for protruding trunk; re-seat elephant; see F1.
 
 ## Verification
-Opening the fridge reveals exactly one (1) chilled, consenting elephant.
+Opening the fridge reveals one chilled elephant.
 ```
 
 **Things are always more complicated than "open, put, close", and the complications are exactly the knowledge agents are missing.** Every human knows the real steps, the expected observations, the branches, the failure modes. No corpus writes them down. This one does.
 
+And here is a real one, from [`transit/ride-a-subway.md`](transit/ride-a-subway.md):
+
+```markdown
+3. **Obtain or validate fare.** [BRANCH: tap-to-pay bank card | transit card with
+   balance | ticket machine | transit app QR] At a machine: select destination or fare
+   type, pay, take the ticket. ⚠️ *Irreversible:* multi-day passes and non-refundable
+   tickets — confirm fare type before paying. → *Expect:* you hold a valid fare medium.
+4. **Pass the fare gate.** Tap or insert; walk through on green/open. → *Expect:* gate
+   opens and (on card systems) displays balance or fare; if rejected, F1.
+...
+- **F2 Boarded the wrong direction:** exit at the next station, cross to the opposite
+  platform (may require staying inside the paid area), reverse.
+```
+
 ---
 
+<a id="why"></a>
 ## 🧠 Why this exists
 
-[`agency-agents`](https://github.com/msitarzewski/agency-agents) curates **who an agent is**. `howto` curates **what an agent knows how to do**: ride a subway, buy and return a product, create an account, make coffee, load a dishwasher, wait in line, pay at a cashier.
-
 Web agents, computer-use agents, and household robots fail at everyday tasks less from weak reasoning than from **missing grounded procedural knowledge**: canonical step order, the observation that confirms each step worked, the decision branches, the recovery paths, and which steps are irreversible.
+
+[`agency-agents`](https://github.com/msitarzewski/agency-agents) (134k stars) covers **who an agent is**. `howto` is the complement: **what an agent knows how to do**. Ride a subway, buy and return a product, create an account, make coffee, load a dishwasher, wait in line, pay at a cashier.
 
 The schema turns prose into training substrate. One corpus yields, simultaneously:
 
 | Training product | Derived from |
 |---|---|
-| 🎓 SFT / midtraining planning traces | Steps + expected observations |
-| 🏋️ Agentic RL tasks with **verifiable rewards** | Goal + Preconditions + Verification |
-| 📚 Curriculum / skill DAG | `prerequisites` links between recipes |
-| 🔎 Inference-time skill library (RAG) | Recipe chunks |
-| 🧪 Contamination-controlled evals | Held-out recipes and locale variants |
-| 🦾 Robot task plans & sim task generation | Embodied `objects` / `affordances` / `workspace` / `safety` |
+| SFT / midtraining planning traces | Steps + expected observations |
+| Agentic RL tasks with **verifiable rewards** | Goal + Preconditions + Verification |
+| Curriculum / skill DAG | `prerequisites` links between recipes |
+| Inference-time skill library (RAG) | Recipe chunks |
+| Contamination-controlled evals | Held-out recipes and locale variants |
+| Robot task plans & sim task generation | Embodied `objects` / `affordances` / `workspace` / `safety` |
 
 ---
 
+<a id="quickstart"></a>
 ## ⚡ Quick start
 
 ```bash
 git clone https://github.com/ShirleyHuang11/howto.git && cd howto
+pip install pyyaml                       # the only dependency
 
-./scripts/validate.sh                    # ✅ validate every recipe against the schema
-python3 scripts/stats.py                 # 📊 per-domain coverage dashboard
-python3 scripts/export.py --format sft   # 🎓 instruction-tuning pairs (JSONL)
-python3 scripts/export.py --format eval  # 🧪 task specs with success criteria (JSONL)
-python3 scripts/export.py --format json  # 📦 full structured recipes
+./scripts/validate.sh                    # validate every recipe against the schema
+python3 scripts/stats.py                 # per-domain coverage dashboard
+python3 scripts/export.py --format sft   # instruction-tuning pairs (JSONL)
+python3 scripts/export.py --format eval  # task specs with success criteria (JSONL)
+python3 scripts/export.py --format json  # full structured recipes
 ```
 
 Or just read one: [`transit/ride-a-subway.md`](transit/ride-a-subway.md) · [`embodied/kitchen/load-a-dishwasher.md`](embodied/kitchen/load-a-dishwasher.md) · [`daily/social/pay-at-a-cashier.md`](daily/social/pay-at-a-cashier.md)
 
 ---
 
+<a id="inside"></a>
 ## 🗂️ What's inside
 
-One task = one markdown file, separated by domain ([`domains.json`](domains.json) is the registry). Every recipe shares one skeleton:
+One task = one markdown file, separated by domain ([`domains.json`](domains.json) is the registry, [`INDEX.md`](INDEX.md) is the full linked index, and the frontmatter is formally specified in [`schema/recipe.schema.json`](schema/recipe.schema.json)). Every recipe shares one skeleton:
 
 ```
 Goal → Preconditions → Steps (every step ends with → *Expect:* …)
@@ -157,6 +173,21 @@ ride a subway · take a bus · hail a rideshare · navigate with maps · book a 
 
 ---
 
+<a id="roadmap"></a>
+## 🗺️ Roadmap
+
+The corpus is at **142 recipes, growing to 200**, all currently `draft` status. Where help lands hardest:
+
+- [ ] 200 recipes across all 12 domains (thinnest today: government, healthcare, housing, communication)
+- [ ] Locale variant packs: `jp-tokyo`, `cn-beijing`, `de-berlin`, and yours
+- [ ] First `reviewed` and `verified` promotions (agent-executability evidence; see CONTRIBUTING)
+- [ ] Embodied recipes → simulator task compiler
+- [ ] Multimodal coverage: a diagram for every embodied recipe
+- [ ] Pre-built SFT/eval exports as tagged releases
+
+---
+
+<a id="contributing"></a>
 ## 🤝 Contributing
 
 One recipe = one markdown file = one PR.
@@ -172,11 +203,25 @@ The short rules: every step needs an *Expect:* · verification must be checkable
 
 ---
 
+<a id="citing"></a>
+## 📎 Citing and using the data
+
+Recipe content is CC-BY-4.0: training (including commercial) is fine with attribution; see [LICENSE](LICENSE). Export formats are documented in [`scripts/export.py`](scripts/export.py)'s header, and each JSONL record carries the recipe `id` for attribution. If you use the corpus in research:
+
+```bibtex
+@misc{howto2026,
+  title  = {howto: an open library of everyday procedural knowledge for training agents and robots},
+  author = {{howto contributors}},
+  year   = {2026},
+  url    = {https://github.com/ShirleyHuang11/howto}
+}
+```
+
+---
+
 <div align="center">
 
-📜 Code: [MIT](LICENSE) · Content: [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
-
-*Now you know how to put an elephant in a fridge. The giraffe is a different recipe:<br>its Preconditions include "remove the elephant first."* 🦒
+Code: [MIT](LICENSE) · Content: [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
 
 **⭐ Star this repo if your agent ever confidently walked the wrong way out of a subway station.**
 

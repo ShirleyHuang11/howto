@@ -18,7 +18,7 @@ media:
 
 ## Goal
 
-Travel from your current location to a destination using the local subway/metro system.
+You are at street level at your destination, having traveled there by the local subway/metro with the fare correctly paid.
 
 ## Preconditions
 
