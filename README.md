@@ -1,23 +1,10 @@
 <div align="center">
 
-```
-        ┌─────────────────────┐
-        │  ╔═══════════════╗  │
-        │  ║   ┌--┐        ║  │
-        │  ║  (o  o)  ┌─┐  ║  │
-        │  ║  /|__|\__│ │  ║  │      📖 howto
-        │  ║   |  |   └─┘  ║  │
-        │  ║  _|  |_       ║  │      one elephant, chilled ✓
-        │  ╚═══════════════╝  │
-        └─────────────────────┘
-          the fridge, closed ✓
-```
-
-# howto
+# 📖 howto
 
 ### An open library of everyday procedural knowledge
 
-**structured how-to recipes for training agents 🤖 and robots 🦾 — readable by humans 🧑**
+**Structured how-to recipes for training agents 🤖 and robots 🦾, readable by humans 🧑**
 
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
@@ -33,11 +20,11 @@
 
 ## 🐘 How do you put an elephant into a fridge?
 
-Easy — everyone knows this one:
+Everyone knows this one:
 
 > 1. Open the fridge. 2. Put the elephant in. 3. Close the fridge.
 
-That's how most datasets think tasks work. Here's how `howto` writes it:
+That is how most datasets think tasks work. Here is how `howto` writes it:
 
 ```markdown
 ## Steps
@@ -54,7 +41,7 @@ That's how most datasets think tasks work. Here's how `howto` writes it:
 Opening the fridge reveals exactly one (1) chilled, consenting elephant.
 ```
 
-**Things are always more complicated than "open, put, close" — and the complications are exactly the knowledge agents are missing.** Every human knows the real steps, the expected observations, the branches, the failure modes. No corpus writes them down. This one does.
+**Things are always more complicated than "open, put, close", and the complications are exactly the knowledge agents are missing.** Every human knows the real steps, the expected observations, the branches, the failure modes. No corpus writes them down. This one does.
 
 ---
 
@@ -62,7 +49,7 @@ Opening the fridge reveals exactly one (1) chilled, consenting elephant.
 
 [`agency-agents`](https://github.com/msitarzewski/agency-agents) curates **who an agent is**. `howto` curates **what an agent knows how to do**: ride a subway, buy and return a product, create an account, make coffee, load a dishwasher, wait in line, pay at a cashier.
 
-Agents — web agents, computer-use agents, household robots — fail at everyday tasks less from weak reasoning than from **missing grounded procedural knowledge**: canonical step order, the observation that confirms each step worked, the decision branches, the recovery paths, and which steps are irreversible.
+Web agents, computer-use agents, and household robots fail at everyday tasks less from weak reasoning than from **missing grounded procedural knowledge**: canonical step order, the observation that confirms each step worked, the decision branches, the recovery paths, and which steps are irreversible.
 
 The schema turns prose into training substrate. One corpus yields, simultaneously:
 
@@ -174,13 +161,13 @@ ride a subway · take a bus · hail a rideshare · navigate with maps · book a 
 One recipe = one markdown file = one PR.
 
 1. Copy [`TEMPLATE.md`](TEMPLATE.md) into the right domain directory
-2. Write the procedure you actually know — original content only
+2. Write the procedure you actually know (original content only)
 3. `./scripts/validate.sh` until green ✅
 4. Open the PR
 
 The short rules: every step needs an *Expect:* · verification must be checkable · irreversible steps get ⚠️ · embodied recipes need the robot frontmatter. Full rules in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-**🌍 Locale expertise is especially welcome** — recipes for how things work in *your* city make agents useful beyond the defaults.
+**🌍 Locale expertise is especially welcome.** Recipes for how things work in *your* city make agents useful beyond the defaults.
 
 ---
 
@@ -188,7 +175,7 @@ The short rules: every step needs an *Expect:* · verification must be checkable
 
 📜 Code: [MIT](LICENSE) · Content: [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
 
-*Now you know how to put an elephant in a fridge. The giraffe is a different recipe —<br>its Preconditions include "remove the elephant first."* 🦒
+*Now you know how to put an elephant in a fridge. The giraffe is a different recipe:<br>its Preconditions include "remove the elephant first."* 🦒
 
 **⭐ Star this repo if your agent ever confidently walked the wrong way out of a subway station.**
 
