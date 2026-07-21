@@ -10,6 +10,10 @@ risk: medium
 prerequisites: []
 status: draft
 last_verified: 2026-07-20
+media:
+  - path: assets/load-a-dishwasher/rack-layout.svg
+    role: overview
+    alt: "Side-view diagram of dishwasher loading zones: top rack holds cups and glasses face-down at an angle without touching; bottom rack holds plates vertical with faces toward the center and pots face-down; cutlery basket loads handles-down except knives which go handles-up; the spray arm below must spin freely before closing."
 objects: [dishwasher, plates, bowls, cups, glasses, cutlery, pots, detergent-pod, cutlery-basket]
 affordances: [door-open, rack-slide, grasp, place, scrape, button-press, dispenser-open]
 workspace: kitchen
@@ -28,6 +32,8 @@ All dirty dishes from the sink/counter are loaded into the dishwasher, detergent
 - Items are dishwasher-safe; set aside wood, cast iron, and delicate/hand-wash-only items.
 
 ## Steps
+
+![Dishwasher loading zones: glasses top, plates bottom, knives handles-up](assets/load-a-dishwasher/rack-layout.svg)
 
 1. **Open the dishwasher door fully and slide out the bottom rack.** → *Expect:* door rests horizontal; bottom rack glides out without obstruction.
 2. **Scrape food solids off each dish into the trash/compost.** No pre-rinsing needed beyond solids. → *Expect:* no bones, pits, or food chunks remain on any item.

@@ -52,6 +52,33 @@
       "type": "string",
       "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
     },
+    "media": {
+      "type": "array",
+      "description": "Optional multimodal assets. Each entry anchors an image/diagram/video to the recipe or a specific step. Files live in <domain>/assets/<recipe-name>/.",
+      "items": {
+        "type": "object",
+        "required": ["path", "role", "alt"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Path relative to the recipe's directory, e.g. assets/ride-a-subway/fare-gate.svg. Must exist."
+          },
+          "step": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Step number this asset illustrates. Omit for recipe-level assets (overview diagrams)."
+          },
+          "role": {
+            "enum": ["action-demo", "expected-observation", "diagram", "warning", "overview"],
+            "description": "What the asset shows: how to perform the step, what success looks like, a schematic, a hazard, or the whole task"
+          },
+          "alt": {
+            "type": "string",
+            "description": "Text description of the asset. Required: it is the fallback for text-only training and accessibility."
+          }
+        }
+      }
+    },
     "objects": {
       "type": "array",
       "items": {"type": "string"},

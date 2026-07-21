@@ -20,6 +20,15 @@ required section, and open a PR. CI runs `scripts/validate.sh` on every PR.
    under Variations or as separate frontmatter locales only after the generic recipe stands alone.
 8. **Embodied recipes** (`embodied/`) must include `objects`, `affordances`, `workspace`,
    and `safety` frontmatter — they compile into simulator tasks.
+9. **Multimodal assets are welcome but optional.** Diagrams, photos, and short clips go in
+   `<domain-dir>/assets/<recipe-name>/` and are declared in the `media` frontmatter block
+   (see TEMPLATE.md): each entry needs a `path`, a `role` (`action-demo`,
+   `expected-observation`, `diagram`, `warning`, or `overview`), and an `alt` text that
+   fully describes the asset — the alt is the text-only training fallback, so write it as
+   a real description, not a caption. Anchor step-specific assets with `step: N` and embed
+   them inline in the body with normal markdown images so they render on GitHub. Prefer
+   SVG for diagrams (diffable, small) and keep photos free of faces, plates, and personal
+   information. Only original or CC-licensed media you have the right to contribute.
 
 ## Status ladder
 

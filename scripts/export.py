@@ -63,6 +63,7 @@ def load_recipe(path):
     sections = parse_sections(text[end + 5:])
     return {
         "id": "%s/%s" % (meta.get("domain"), meta.get("name")),
+        "dir": os.path.relpath(os.path.dirname(path), ROOT),
         "meta": meta,
         "sections": sections,
         "steps": parse_steps(sections.get("Steps", "")),
@@ -97,8 +98,13 @@ def to_sft(recipe):
         lines += ["", "If something goes wrong:", sections["Failure modes & recovery"]]
     if sections.get("Verification"):
         lines += ["", "You are done when: %s" % sections["Verification"].strip()]
-    return {"id": recipe["id"], "prompt": prompt, "response": "\n".join(lines),
-            "domain": meta["domain"], "risk": meta.get("risk"), "status": meta.get("status")}
+    out = {"id": recipe["id"], "prompt": prompt, "response": "\n".join(lines),
+           "domain": meta["domain"], "risk": meta.get("risk"), "status": meta.get("status")}
+    if meta.get("media"):
+        out["media"] = [{"path": "%s/%s" % (recipe["dir"], m.get("path")),
+                         "step": m.get("step"), "role": m.get("role"), "alt": m.get("alt")}
+                        for m in meta["media"]]
+    return out
 
 
 def to_eval(recipe):
@@ -114,6 +120,10 @@ def to_eval(recipe):
         "irreversible_steps": [s["n"] for s in recipe["steps"] if s["irreversible"]],
         "status": meta.get("status"),
     }
+    if meta.get("media"):
+        spec["media"] = [{"path": "%s/%s" % (recipe["dir"], m.get("path")),
+                          "step": m.get("step"), "role": m.get("role"), "alt": m.get("alt")}
+                         for m in meta["media"]]
     if meta.get("domain") == "embodied":
         spec["sim"] = {
             "workspace": meta.get("workspace"),

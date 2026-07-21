@@ -153,6 +153,7 @@ ride a subway · take a bus · hail a rideshare · navigate with maps · book a 
 3. **Irreversible steps are marked ⚠️ inline** — payments, deletions, hot liquids, handed-over packages. Agents must learn *where to stop and confirm*, and that signal lives in the data.
 4. **Failure modes are first-class.** Real procedures go wrong in known ways; the recovery paths are half the knowledge.
 5. **Generic first, locale variants second.** The `generic` recipe stands alone; `us-nyc` / `jp-tokyo` / `cn-beijing` variants layer on top.
+6. **Multimodal, with text as the floor.** Recipes can attach diagrams, photos, and clips per step via the `media` frontmatter (roles: action-demo, expected-observation, diagram, warning, overview), each with a full alt description so every recipe still trains text-only models. See the fare-gate diagram in [`transit/ride-a-subway.md`](transit/ride-a-subway.md) and the rack layout in [`embodied/kitchen/load-a-dishwasher.md`](embodied/kitchen/load-a-dishwasher.md).
 
 ---
 

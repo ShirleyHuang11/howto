@@ -28,6 +28,7 @@ KEBAB = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 EST_TIME = re.compile(r"^[0-9]+(min|h|d)(-[0-9]+(min|h|d))?$")
 DATE = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$")
 EMBODIED_FIELDS = ["subdomain", "objects", "affordances", "workspace", "safety"]
+MEDIA_ROLES = {"action-demo", "expected-observation", "diagram", "warning", "overview"}
 REQUIRED_SECTIONS = ["Goal", "Preconditions", "Steps", "Failure modes & recovery", "Verification"]
 
 
@@ -111,6 +112,35 @@ def check_recipe(path, domains):
     prereqs = meta.get("prerequisites")
     if prereqs is not None and not isinstance(prereqs, list):
         errors.append("prerequisites must be a list")
+
+    media = meta.get("media")
+    if media is not None:
+        if not isinstance(media, list):
+            errors.append("media must be a list")
+        else:
+            n_steps = len(re.findall(r"^\d+\.\s", body, re.M))
+            for i, m in enumerate(media):
+                if not isinstance(m, dict):
+                    errors.append("media[%d] must be a mapping" % i)
+                    continue
+                for field in ("path", "role", "alt"):
+                    if field not in m:
+                        errors.append("media[%d] missing field: %s" % (i, field))
+                role = m.get("role")
+                if role is not None and role not in MEDIA_ROLES:
+                    errors.append("media[%d].role %r not in %s" % (i, role, sorted(MEDIA_ROLES)))
+                mpath = m.get("path")
+                if mpath:
+                    if not str(mpath).startswith("assets/"):
+                        errors.append("media[%d].path must start with assets/" % i)
+                    elif not os.path.isfile(os.path.join(os.path.dirname(path), str(mpath))):
+                        errors.append("media[%d].path not found: %s" % (i, mpath))
+                step_ref = m.get("step")
+                if step_ref is not None:
+                    if not isinstance(step_ref, int) or step_ref < 1:
+                        errors.append("media[%d].step must be a positive integer" % i)
+                    elif n_steps and step_ref > n_steps:
+                        errors.append("media[%d].step %d exceeds step count %d" % (i, step_ref, n_steps))
 
     if domain == "embodied":
         for field in EMBODIED_FIELDS:

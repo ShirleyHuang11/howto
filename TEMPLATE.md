@@ -15,6 +15,12 @@ last_verified: 2026-07-20
 # affordances: [button-press, pour]  # manipulation primitives required
 # workspace: kitchen                 # scene class, used for sim task compilation
 # safety: {hot_surfaces: true, fragile: [], human_proximity: continue}
+# --- multimodal extension: optional, any recipe ---
+# media:                             # assets live in <domain-dir>/assets/<recipe-name>/
+#   - path: assets/task-name/step4.svg
+#     step: 4                        # omit for recipe-level assets
+#     role: diagram                  # action-demo | expected-observation | diagram | warning | overview
+#     alt: "One-sentence text description; required, it is the text-only fallback"
 ---
 
 ## Goal

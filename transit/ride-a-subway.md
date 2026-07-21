@@ -9,6 +9,11 @@ risk: low
 prerequisites: [have-payment-method, know-destination]
 status: draft
 last_verified: 2026-07-20
+media:
+  - path: assets/ride-a-subway/fare-gate-flow.svg
+    step: 4
+    role: diagram
+    alt: "Side view of a fare gate: tap card on the yellow reader, wait for the green light, walk through without stopping. If rejected, step aside and try the next gate or ask staff. Distance-fare systems require tapping out at exit."
 ---
 
 ## Goal
@@ -26,6 +31,8 @@ Travel from your current location to a destination using the local subway/metro 
 2. **Find and enter the nearest station.** Look for the system's logo/signage at street level. → *Expect:* you are in a station hall with fare gates and a system map that shows your planned line.
 3. **Obtain or validate fare.** [BRANCH: tap-to-pay bank card | transit card with balance | ticket machine | transit app QR] At a machine: select destination or fare type, pay, take the ticket/card. ⚠️ *Irreversible:* multi-day passes and non-refundable tickets — confirm fare type before paying. → *Expect:* you hold a valid fare medium for this trip.
 4. **Pass the fare gate.** Tap or insert; walk through on green/open. → *Expect:* gate opens and (on card systems) displays balance or fare; if rejected, F1.
+
+   ![Fare gate: tap the reader, wait for green, walk through](assets/ride-a-subway/fare-gate-flow.svg)
 5. **Navigate to the correct platform.** Follow signs for your line *and direction* (terminus name from step 1). → *Expect:* platform signage lists your destination or the correct terminus.
 6. **Board the train.** Let passengers exit first; move inside the car. → *Expect:* the in-car line map matches your line; next-station announcements begin.
 7. **Monitor stops and transfer if planned.** At a transfer, follow the connecting line's signs (repeat step 5). → *Expect:* each announced station matches your route plan in sequence.
