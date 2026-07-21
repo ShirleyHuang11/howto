@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 340" font-family="-apple-system, Segoe UI, Roboto, sans-serif">
+  <rect width="520" height="340" fill="#f5f7fa"/>
+
+  <!-- floor -->
+  <rect x="0" y="300" width="520" height="40" fill="#e2e8f0"/>
+
+  <!-- fridge body -->
+  <rect x="150" y="30" width="220" height="280" rx="14" fill="#cfd8e3" stroke="#8593a6" stroke-width="3"/>
+  <!-- interior cavity -->
+  <rect x="168" y="48" width="150" height="244" rx="8" fill="#eef2f7" stroke="#b7c2d0" stroke-width="2"/>
+  <!-- shelves -->
+  <line x1="168" y1="120" x2="318" y2="120" stroke="#c3ccd8" stroke-width="3"/>
+  <line x1="168" y1="200" x2="318" y2="200" stroke="#c3ccd8" stroke-width="3"/>
+
+  <!-- the door, sprung open because the elephant does not fit -->
+  <g transform="rotate(20 372 60)">
+    <rect x="372" y="40" width="150" height="256" rx="12" fill="#dbe3ec" stroke="#8593a6" stroke-width="3"/>
+    <rect x="384" y="150" width="10" height="70" rx="5" fill="#8593a6"/>
+  </g>
+
+  <!-- ELEPHANT crammed inside: oversized, squished, trunk out the gap -->
+  <g fill="#9aa7b8" stroke="#6b7788" stroke-width="2.5">
+    <!-- body squashed into the cavity -->
+    <path d="M175 250 q -6 -95 80 -100 q 70 -3 60 95 q -2 8 -12 8 l -118 0 q -9 0 -10 -3 z"/>
+    <!-- head/cheek bulging past the shelf -->
+    <ellipse cx="215" cy="150" rx="52" ry="46"/>
+    <!-- ear folded against the wall -->
+    <path d="M180 130 q -26 -6 -20 34 q 4 22 26 20 z"/>
+    <!-- eye -->
+    <circle cx="205" cy="140" r="5" fill="#3d4757" stroke="none"/>
+    <!-- back leg jammed down -->
+    <rect x="250" y="250" width="34" height="46" rx="12"/>
+    <rect x="196" y="250" width="34" height="46" rx="12"/>
+  </g>
+  <!-- trunk escaping through the door gap -->
+  <path d="M235 165 q 60 6 96 40 q 22 22 46 8" fill="none" stroke="#9aa7b8" stroke-width="20" stroke-linecap="round"/>
+  <path d="M235 165 q 60 6 96 40 q 22 22 46 8" fill="none" stroke="#6b7788" stroke-width="2.5" stroke-linecap="round" opacity="0.35"/>
+
+  <!-- little strain lines -->
+  <g stroke="#f6a609" stroke-width="3" stroke-linecap="round">
+    <line x1="150" y1="70" x2="138" y2="60"/>
+    <line x1="150" y1="90" x2="136" y2="90"/>
+    <line x1="370" y1="70" x2="384" y2="58"/>
+  </g>
+
+  <!-- caption -->
+  <text x="260" y="328" text-anchor="middle" font-size="15" font-weight="600" fill="#475569">F1: elephant exceeds fridge capacity. Acquire a larger fridge, or a smaller elephant.</text>
+</svg>

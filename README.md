@@ -8,7 +8,7 @@
 
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Recipes](https://img.shields.io/badge/recipes-537-brightgreen.svg)](INDEX.md)
+[![Recipes](https://img.shields.io/badge/recipes-737-brightgreen.svg)](INDEX.md)
 [![Domains](https://img.shields.io/badge/domains-12-blueviolet.svg)](domains.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](CONTRIBUTING.md)
 
@@ -19,6 +19,10 @@
 ---
 
 ## 🐘 How do you put an elephant into a fridge?
+
+<div align="center">
+<img src="assets/elephant-in-fridge.svg" alt="An elephant crammed into a fridge, trunk sticking out the door that won't close, captioned: F1 elephant exceeds fridge capacity, acquire a larger fridge or a smaller elephant" width="440">
+</div>
 
 Everyone knows this one:
 
@@ -176,11 +180,10 @@ ride a subway · take a bus · hail a rideshare · navigate with maps · book a 
 <a id="roadmap"></a>
 ## 🗺️ Roadmap
 
-The corpus is at **537 recipes, growing to 200**, all currently `draft` status. Where help lands hardest:
+The corpus spans **737 recipes across all 12 domains** and keeps growing. Where help lands hardest:
 
-- [ ] 200 recipes across all 12 domains (thinnest today: government, healthcare, housing, communication)
 - [ ] Locale variant packs: `jp-tokyo`, `cn-beijing`, `de-berlin`, and yours
-- [ ] First `reviewed` and `verified` promotions (agent-executability evidence; see CONTRIBUTING)
+- [ ] `reviewed` and `verified` promotions (agent-executability evidence; see CONTRIBUTING)
 - [ ] Embodied recipes → simulator task compiler
 - [ ] Multimodal coverage: a diagram for every embodied recipe
 - [ ] Pre-built SFT/eval exports as tagged releases
