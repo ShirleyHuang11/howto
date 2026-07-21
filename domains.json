@@ -1,0 +1,63 @@
+{
+  "transit": {
+    "track": "physical",
+    "description": "Navigation and transportation: subway, bus, rideshare, driving, walking routes."
+  },
+  "shopping": {
+    "track": "digital",
+    "description": "Commerce: comparing, purchasing, returning, refunds, price tracking."
+  },
+  "accounts": {
+    "track": "digital",
+    "description": "Identity and access: creating accounts, 2FA, password recovery, account deletion."
+  },
+  "finance": {
+    "track": "digital",
+    "description": "Money: bank accounts, paying bills, disputing charges, taxes."
+  },
+  "government": {
+    "track": "mixed",
+    "description": "Civic services: ID renewal, visa forms, DMV, registrations."
+  },
+  "healthcare": {
+    "track": "mixed",
+    "description": "Health access: appointments, insurance claims, prescriptions."
+  },
+  "housing": {
+    "track": "mixed",
+    "description": "Home logistics: renting, utilities, repairs, moving."
+  },
+  "travel": {
+    "track": "mixed",
+    "description": "Trips: booking flights, check-in, customs, hotels."
+  },
+  "communication": {
+    "track": "mixed",
+    "description": "Correspondence and coordination: packages, meetings, complaints."
+  },
+  "digital": {
+    "track": "digital",
+    "description": "Computer and app tasks: installing software, exporting data, unsubscribing, backups."
+  },
+  "daily": {
+    "track": "common-sense",
+    "description": "Common-sense everyday procedures every human knows and no corpus writes down.",
+    "subdomains": {
+      "self-care": "Personal routines: brush teeth, wash hands, tie shoelaces, get ready for bed.",
+      "food": "Everyday food handling: boil water, make tea, store leftovers, use a microwave.",
+      "home": "Basic home upkeep: change a lightbulb, unclog a drain, sort recycling.",
+      "social": "Everyday social scripts: order at a restaurant, pay at a cashier, wait in line, answer a call.",
+      "errands": "Out-of-home basics: mail a letter, use an ATM, refuel a car, use a vending machine."
+    }
+  },
+  "embodied": {
+    "track": "robot",
+    "description": "Robot-executable procedures with object, affordance, and workspace annotations.",
+    "subdomains": {
+      "kitchen": "Kitchen manipulation: make coffee, load dishwasher, set a table, store groceries.",
+      "household": "Household chores: fold laundry, tidy a room, water plants, take out trash.",
+      "mobility": "Navigation in human spaces: open doors, use an elevator, cross a street, deliver items.",
+      "care": "Assistive routines: fetch items, medication reminders. Safety-critical; human review required."
+    }
+  }
+}
