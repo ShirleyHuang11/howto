@@ -60,4 +60,4 @@ The grill is outdoors, coals are ash-gray and glowing, heat zones are arranged, 
 
 ## Safety & privacy
 
-High risk from fire and carbon monoxide. ⚠️ Never light or cool charcoal indoors, never add lighter fluid to lit coals, and keep children, pets, and combustibles away.
+High risk from fire and carbon-monoxide poisoning. ⚠️ Never indoors: do not light or cool charcoal inside, never add lighter fluid to lit coals, and keep children, pets, and combustibles away.

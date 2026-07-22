@@ -60,4 +60,4 @@ The bowl and under-rim area are rinsed clean, visible limescale is gone or reduc
 
 ## Safety & privacy
 
-Medium risk from chemical incompatibility and splashes. ⚠️ Use one product family only, ventilate, wear gloves, and never mix acid descalers with bleach.
+Medium risk from chemical incompatibility and splashes. ⚠️ Use one product family only: never-mix-chemicals, especially acid descalers with bleach.

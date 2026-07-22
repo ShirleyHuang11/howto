@@ -60,4 +60,4 @@ The silicone is rinsed, dry to the touch, free of removable mold, and any remain
 
 ## Safety & privacy
 
-Medium risk from chemicals and ventilation. ⚠️ Use only one cleaner in the session, never mix bleach with vinegar, descaler, ammonia, toilet cleaner, or unknown residues.
+Medium risk from chemicals and ventilation. ⚠️ Use only one cleaner in the session: never-mix-chemicals, especially bleach with vinegar, descaler, ammonia, toilet cleaner, or unknown residues.
