@@ -24,7 +24,7 @@
 <img src="assets/elephant-in-fridge.png" alt="An elephant crammed into a fridge with the door held open" width="420">
 </div>
 
-Everyone knows this one:
+Easy:
 
 > 1. Open the fridge. 2. Put the elephant in. 3. Close the fridge.
 
