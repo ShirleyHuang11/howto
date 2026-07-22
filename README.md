@@ -8,7 +8,7 @@
 
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Recipes](https://img.shields.io/badge/recipes-937-brightgreen.svg)](INDEX.md)
+[![Recipes](https://img.shields.io/badge/recipes-1137-brightgreen.svg)](INDEX.md)
 [![Domains](https://img.shields.io/badge/domains-12-blueviolet.svg)](domains.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](CONTRIBUTING.md)
 
@@ -180,7 +180,7 @@ ride a subway · take a bus · hail a rideshare · navigate with maps · book a 
 <a id="roadmap"></a>
 ## 🗺️ Roadmap
 
-The corpus spans **937 recipes across all 12 domains** and keeps growing. Where help lands hardest:
+The corpus spans **1137 recipes across all 12 domains** and keeps growing. Where help lands hardest:
 
 - [ ] Locale variant packs: `jp-tokyo`, `cn-beijing`, `de-berlin`, and yours
 - [ ] `reviewed` and `verified` promotions (agent-executability evidence; see CONTRIBUTING)
