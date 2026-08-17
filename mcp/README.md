@@ -1,6 +1,6 @@
 # howto MCP server 🤖🦾
 
-Give your agent the **verified steps for 1,300+ everyday tasks** — at inference time, over the
+Give your agent the **verified steps for 1,500+ everyday tasks** — at inference time, over the
 [Model Context Protocol](https://modelcontextprotocol.io). Instead of guessing (and confidently
 skipping the step that actually matters), the agent searches the corpus and reads the recipe:
 every step with its **expected observation**, ⚠ markers on **irreversible** steps, failure
