@@ -6,4 +6,5 @@ cd "$(dirname "$0")/.."
 python3 scripts/validate.py "$@"
 if [ "$#" -eq 0 ]; then
   python3 scripts/validate_journeys.py
+  python3 scripts/validate_packs.py
 fi

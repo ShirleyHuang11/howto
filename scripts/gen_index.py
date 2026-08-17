@@ -87,10 +87,34 @@ def main():
                 meta.get("status", "-")))
         lines.append("")
 
+    # Packs (curated cross-domain kits) — also counted separately.
+    pdir = os.path.join(ROOT, "packs")
+    packs = []
+    if os.path.isdir(pdir):
+        for n in sorted(os.listdir(pdir)):
+            if not n.endswith(".md") or n == "README.md":
+                continue
+            meta = frontmatter(os.path.join(pdir, n))
+            if meta.get("kind") != "pack":
+                continue
+            packs.append(("packs/" + n, meta))
+    if packs:
+        lines.append("## packs (%d) — curated kits" % len(packs))
+        lines.append("")
+        lines.append("Grab-a-kit bundles of recipes; see [`packs/`](packs/README.md).")
+        lines.append("")
+        lines.append("| Pack | Recipes | Journeys |")
+        lines.append("|---|---|---|")
+        for rel, meta in packs:
+            name = meta.get("name", os.path.splitext(os.path.basename(rel))[0])
+            lines.append("| [%s](%s) | %d | %d |" % (
+                name, rel, len(meta.get("recipes") or []), len(meta.get("journeys") or [])))
+        lines.append("")
+
     with open(os.path.join(ROOT, "INDEX.md"), "w") as f:
         f.write("\n".join(lines) + "\n")
-    print("INDEX.md written: %d recipes across %d domains, %d journeys"
-          % (total, len(rows), len(journeys)))
+    print("INDEX.md written: %d recipes across %d domains, %d journeys, %d packs"
+          % (total, len(rows), len(journeys), len(packs)))
 
 
 if __name__ == "__main__":
