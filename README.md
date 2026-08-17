@@ -8,12 +8,13 @@
 
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Recipes](https://img.shields.io/badge/recipes-1337-brightgreen.svg)](INDEX.md)
+[![Recipes](https://img.shields.io/badge/recipes-1537-brightgreen.svg)](INDEX.md)
 [![Journeys](https://img.shields.io/badge/journeys-4-00b3b3.svg)](journeys/)
+[![Packs](https://img.shields.io/badge/packs-8-ff8c00.svg)](packs/)
 [![Domains](https://img.shields.io/badge/domains-12-blueviolet.svg)](domains.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](CONTRIBUTING.md)
 
-[**Use it**](#use) · [**Why**](#why) · [**What's inside**](#inside) · [**Journeys**](#journeys) · [**Quick start**](#quickstart) · [**Roadmap**](#roadmap) · [**Contributing**](#contributing) · [**Citing**](#citing)
+[**Use it**](#use) · [**Why**](#why) · [**What's inside**](#inside) · [**Packs**](#packs) · [**Journeys**](#journeys) · [**Quick start**](#quickstart) · [**Roadmap**](#roadmap) · [**Contributing**](#contributing) · [**Citing**](#citing)
 
 </div>
 
@@ -183,6 +184,23 @@ ride a subway · take a bus · hail a rideshare · navigate with maps · book a 
 
 ---
 
+<a id="packs"></a>
+## 🎒 Packs — grab a whole kit, install it as a skill
+
+Nobody assembles a scam-defense toolkit from a 1,500-recipe index. A [**pack**](packs/) is a curated, cross-domain kit for one real situation — and it installs into your agent as a self-contained **skill** in one command:
+
+```bash
+python3 scripts/build_skills.py scam-and-fraud-defense   # → packs/skills/.../SKILL.md
+```
+
+Drop it into Claude Code (`.claude/skills/`) or point your agent at the [MCP server](mcp/) and say *"use the scam-defense pack."* Your agent now follows verified steps — *Expect* observations and ⚠ warnings included — instead of guessing. Every pack's recipes are [machine-checked to resolve](scripts/validate_packs.py).
+
+| 🛡️ [Scam & Fraud Defense](packs/scam-and-fraud-defense.md) | 🚑 [First-Aid & Emergencies](packs/first-aid-emergencies.md) | 📦 [Move Into a New Place](packs/move-into-a-new-place.md) | 🍳 [Kitchen Starter](packs/kitchen-starter.md) |
+|---|---|---|---|
+| 🦾 **[Robot Manipulation Primitives](packs/robot-manipulation-primitives.md)** | 🔐 **[Digital Security Basics](packs/digital-security-basics.md)** | 🚗 **[New Car Owner](packs/new-car-owner.md)** | 💰 **[Money Starter](packs/money-starter.md)** |
+
+---
+
 <a id="journeys"></a>
 ## 🗺️ Journeys — long-horizon tasks
 
@@ -213,7 +231,7 @@ Export the planning traces with `python3 scripts/export.py --format journeys`. N
 <a id="roadmap"></a>
 ## 🗺️ Roadmap
 
-The corpus spans **1337 recipes across all 12 domains** and keeps growing. Where help lands hardest:
+The corpus spans **1537 recipes across all 12 domains** and keeps growing. Where help lands hardest:
 
 - [ ] Locale variant packs: `jp-tokyo`, `cn-beijing`, `de-berlin`, and yours
 - [ ] `reviewed` and `verified` promotions (agent-executability evidence; see CONTRIBUTING)
