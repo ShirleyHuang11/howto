@@ -12,7 +12,7 @@
 [![Domains](https://img.shields.io/badge/domains-12-blueviolet.svg)](domains.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](CONTRIBUTING.md)
 
-[**Why**](#why) · [**What's inside**](#inside) · [**Quick start**](#quickstart) · [**Roadmap**](#roadmap) · [**Contributing**](#contributing) · [**Citing**](#citing)
+[**Use it**](#use) · [**Why**](#why) · [**What's inside**](#inside) · [**Quick start**](#quickstart) · [**Roadmap**](#roadmap) · [**Contributing**](#contributing) · [**Citing**](#citing)
 
 </div>
 
@@ -58,6 +58,21 @@ And here is a real one, from [`transit/ride-a-subway.md`](transit/ride-a-subway.
 - **F2 Boarded the wrong direction:** exit at the next station, cross to the opposite
   platform (may require staying inside the paid area), reverse.
 ```
+
+---
+
+<a id="use"></a>
+## 🚀 Use it, don't just read it
+
+Two ways to get value in under a minute:
+
+- **🔎 Browse** — a live, searchable viewer over the whole corpus, filter by domain, and **copy any recipe as agent context** with one click: **[shirleyhuang11.github.io/howto](https://shirleyhuang11.github.io/howto/)**
+- **🤖 Give it to your agent** — the **[MCP server](mcp/)** exposes `search_howto` / `get_howto` so Claude Code, Claude Desktop, or Cursor can pull the verified steps at inference time — warnings and all — instead of guessing:
+
+  ```bash
+  pip install -r mcp/requirements.txt
+  claude mcp add howto -- python3 "$(pwd)/mcp/server.py"
+  ```
 
 ---
 

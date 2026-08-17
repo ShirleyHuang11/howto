@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>howto — browse the corpus</title>
+<meta name="description" content="Search 1,337 structured how-to recipes for training agents and robots. Every step has an expected observation; irreversible steps are marked.">
+<style>
+  :root {
+    --bg: #ffffff; --panel: #f6f7f9; --panel-2: #eef0f3; --border: #e2e5ea;
+    --text: #1a1d23; --muted: #5b616e; --accent: #2f7d4f; --accent-weak: #e6f2ec;
+    --warn: #b4531a; --warn-weak: #fbeee2; --chip: #ffffff; --shadow: rgba(20,24,31,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1216; --panel: #171b21; --panel-2: #1e232b; --border: #2a303a;
+      --text: #e7eaf0; --muted: #98a1b2; --accent: #5bcf8a; --accent-weak: #16281e;
+      --warn: #e6975a; --warn-weak: #2a1e12; --chip: #1b2027; --shadow: rgba(0,0,0,.3);
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  header { padding: 28px 20px 10px; max-width: 1040px; margin: 0 auto; }
+  h1 { margin: 0; font-size: 26px; letter-spacing: -.01em; }
+  h1 .emoji { font-style: normal; }
+  .tag { color: var(--muted); font-size: 14px; margin-top: 4px; }
+  .tag b { color: var(--text); }
+  .controls { position: sticky; top: 0; z-index: 5; background: var(--bg);
+    border-bottom: 1px solid var(--border); padding: 12px 20px; }
+  .controls .inner { max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+  #q { width: 100%; padding: 11px 14px; font-size: 15px; border: 1px solid var(--border);
+    border-radius: 10px; background: var(--panel); color: var(--text); }
+  #q:focus { outline: 2px solid var(--accent); border-color: transparent; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { border: 1px solid var(--border); background: var(--chip); color: var(--muted);
+    padding: 4px 10px; border-radius: 999px; font-size: 12.5px; cursor: pointer; white-space: nowrap; }
+  .chip:hover { border-color: var(--accent); }
+  .chip.on { background: var(--accent-weak); border-color: var(--accent); color: var(--text); font-weight: 600; }
+  .chip .n { opacity: .6; margin-left: 4px; }
+  main { max-width: 1040px; margin: 0 auto; padding: 8px 20px 60px; }
+  .count { color: var(--muted); font-size: 13px; margin: 10px 2px; }
+  .card { border: 1px solid var(--border); border-radius: 12px; background: var(--panel);
+    margin: 9px 0; box-shadow: 0 1px 2px var(--shadow); overflow: hidden; }
+  .card > summary { list-style: none; cursor: pointer; padding: 13px 16px; display: flex;
+    align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .card > summary::-webkit-details-marker { display: none; }
+  .card .title { font-weight: 650; font-size: 15.5px; text-transform: capitalize; }
+  .badge { font-size: 11px; padding: 2px 7px; border-radius: 6px; background: var(--panel-2);
+    color: var(--muted); border: 1px solid var(--border); }
+  .badge.dom { color: var(--accent); }
+  .badge.risk-high { color: #fff; background: var(--warn); border-color: var(--warn); }
+  .badge.risk-medium { color: var(--warn); background: var(--warn-weak); border-color: var(--warn-weak); }
+  .g { color: var(--muted); font-size: 13.5px; width: 100%; margin-top: 2px; }
+  .body { padding: 4px 16px 16px; border-top: 1px solid var(--border); }
+  ol { padding-left: 22px; margin: 12px 0; }
+  ol li { margin: 7px 0; }
+  .exp { color: var(--muted); }
+  .exp b { color: var(--accent); font-weight: 600; }
+  .irr { color: var(--warn); font-weight: 600; }
+  .sec { margin: 12px 0 4px; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .verify { background: var(--accent-weak); border-radius: 8px; padding: 9px 12px; font-size: 14px; }
+  .actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  button.act { border: 1px solid var(--border); background: var(--chip); color: var(--text);
+    padding: 7px 13px; border-radius: 8px; font-size: 13px; cursor: pointer; }
+  button.act:hover { border-color: var(--accent); }
+  button.act.done { color: var(--accent); border-color: var(--accent); }
+  .meta { color: var(--muted); font-size: 12.5px; margin-top: 10px; }
+  footer { text-align: center; color: var(--muted); font-size: 12.5px; padding: 30px 20px; }
+  .loading { text-align: center; color: var(--muted); padding: 60px 20px; }
+</style>
+</head>
+<body>
+<header>
+  <h1><span class="emoji">📖</span> howto</h1>
+  <div class="tag">Search <b id="total">…</b> structured how-to recipes for agents 🤖 & robots 🦾.
+    Every step states what to <b>expect</b>; irreversible steps are <span class="irr">⚠ marked</span>.
+    <a href="https://github.com/ShirleyHuang11/howto">Repo →</a></div>
+</header>
+<div class="controls"><div class="inner">
+  <input id="q" type="search" placeholder="Search tasks — e.g. “change a tire”, “toddler”, “2FA”, “deep fry”…" autocomplete="off">
+  <div class="chips" id="domainChips"></div>
+</div></div>
+<main>
+  <div class="count" id="count"></div>
+  <div id="results"></div>
+  <div class="loading" id="loading">Loading the corpus…</div>
+</main>
+<footer>
+  Content CC BY 4.0 · <a href="https://github.com/ShirleyHuang11/howto">github.com/ShirleyHuang11/howto</a>
+  · Want your agent to <i>know</i> these? See the <a href="https://github.com/ShirleyHuang11/howto/tree/main/mcp">MCP server</a>.
+</footer>
+<script>
+const REPO = "https://github.com/ShirleyHuang11/howto/blob/main/";
+let DATA = [], DOMAINS = {}, activeDomain = null, q = "";
+const el = id => document.getElementById(id);
+
+fetch("recipes.json").then(r => r.json()).then(d => {
+  DATA = d.recipes; DOMAINS = d.domains;
+  el("total").textContent = d.count.toLocaleString();
+  el("loading").style.display = "none";
+  buildChips();
+  render();
+}).catch(e => { el("loading").textContent = "Could not load recipes.json — " + e; });
+
+function buildChips() {
+  const chips = el("domainChips");
+  const all = document.createElement("div");
+  all.className = "chip on"; all.dataset.dom = "";
+  all.innerHTML = 'all <span class="n">' + DATA.length + '</span>';
+  chips.appendChild(all);
+  Object.keys(DOMAINS).sort((a, b) => DOMAINS[b] - DOMAINS[a]).forEach(dom => {
+    const c = document.createElement("div");
+    c.className = "chip"; c.dataset.dom = dom;
+    c.innerHTML = dom + ' <span class="n">' + DOMAINS[dom] + '</span>';
+    chips.appendChild(c);
+  });
+  chips.addEventListener("click", e => {
+    const c = e.target.closest(".chip"); if (!c) return;
+    activeDomain = c.dataset.dom || null;
+    [...chips.children].forEach(x => x.classList.toggle("on", x === c));
+    render();
+  });
+}
+
+el("q").addEventListener("input", e => { q = e.target.value.toLowerCase().trim(); render(); });
+
+function score(r, terms) {
+  if (!terms.length) return 1;
+  const hay = (r.title + " " + r.goal + " " + r.domain + " " + (r.subdomain || "")).toLowerCase();
+  const steps = r.steps.map(s => s.action).join(" ").toLowerCase();
+  let s = 0;
+  for (const t of terms) {
+    if (r.title.toLowerCase().includes(t)) s += 5;
+    else if (hay.includes(t)) s += 3;
+    else if (steps.includes(t)) s += 1;
+    else return 0;
+  }
+  return s;
+}
+
+function render() {
+  const terms = q ? q.split(/\s+/) : [];
+  let rows = DATA;
+  if (activeDomain) rows = rows.filter(r => r.domain === activeDomain);
+  rows = rows.map(r => [score(r, terms), r]).filter(x => x[0] > 0)
+             .sort((a, b) => b[0] - a[0] || a[1].title.localeCompare(b[1].title))
+             .map(x => x[1]);
+  el("count").textContent = rows.length.toLocaleString() + " recipe" + (rows.length === 1 ? "" : "s")
+    + (activeDomain ? " in " + activeDomain : "") + (q ? ' matching “' + q + '”' : "");
+  const out = el("results"); out.innerHTML = "";
+  for (const r of rows.slice(0, 300)) out.appendChild(card(r));
+  if (rows.length > 300) {
+    const m = document.createElement("div"); m.className = "count";
+    m.textContent = "Showing first 300 — refine your search to see more.";
+    out.appendChild(m);
+  }
+}
+
+function esc(s) { const d = document.createElement("div"); d.textContent = s || ""; return d.innerHTML; }
+
+function card(r) {
+  const d = document.createElement("details"); d.className = "card";
+  const where = r.subdomain ? r.domain + "/" + r.subdomain : r.domain;
+  const riskBadge = (r.risk === "high" || r.risk === "medium")
+    ? '<span class="badge risk-' + r.risk + '">' + r.risk + " risk</span>" : "";
+  d.innerHTML =
+    '<summary><span class="title">' + esc(r.title) + '</span>' +
+    '<span class="badge dom">' + where + '</span>' +
+    '<span class="badge">' + esc(r.difficulty) + '</span>' +
+    '<span class="badge">' + esc(r.est_time) + '</span>' + riskBadge +
+    '<span class="g">' + esc(r.goal) + '</span></summary>';
+  const body = document.createElement("div"); body.className = "body";
+  let steps = "<ol>";
+  for (const s of r.steps) {
+    steps += "<li>" + (s.irreversible ? '<span class="irr">⚠ </span>' : "") + esc(s.action);
+    if (s.expect) steps += ' <span class="exp"><b>Expect:</b> ' + esc(s.expect) + "</span>";
+    steps += "</li>";
+  }
+  steps += "</ol>";
+  body.innerHTML = '<div class="sec">Steps</div>' + steps +
+    (r.verification ? '<div class="sec">Done when</div><div class="verify">' + esc(r.verification) + "</div>" : "") +
+    '<div class="actions">' +
+      '<button class="act copy">📋 Copy as agent context</button>' +
+      '<a class="act" href="' + REPO + r.path + '" target="_blank" rel="noopener">View full recipe on GitHub ↗</a>' +
+    '</div>' +
+    '<div class="meta">id: <code>' + r.id + '</code>' +
+      (r.prerequisites.length ? " · needs: " + r.prerequisites.map(esc).join(", ") : "") + "</div>";
+  body.querySelector(".copy").addEventListener("click", ev => {
+    navigator.clipboard.writeText(asContext(r)).then(() => {
+      ev.target.textContent = "✓ Copied"; ev.target.classList.add("done");
+      setTimeout(() => { ev.target.textContent = "📋 Copy as agent context"; ev.target.classList.remove("done"); }, 1600);
+    });
+  });
+  d.appendChild(body);
+  return d;
+}
+
+function asContext(r) {
+  const L = ["How to " + r.title + " (howto:" + r.id + ")", "", "Goal: " + r.goal, "", "Steps:"];
+  for (const s of r.steps) {
+    let line = s.n + ". " + (s.irreversible ? "[IRREVERSIBLE] " : "") + s.action;
+    if (s.expect) line += "  -> Expect: " + s.expect;
+    L.push(line);
+  }
+  if (r.verification) { L.push("", "Done when: " + r.verification); }
+  L.push("", "Source: " + REPO + r.path);
+  return L.join("\n");
+}
+</script>
+</body>
+</html>
