@@ -3,6 +3,10 @@
     "track": "physical",
     "description": "Navigation and transportation: subway, bus, rideshare, driving, walking routes."
   },
+  "business": {
+    "track": "digital",
+    "description": "Business operations: invoicing and bookkeeping, CRM and sales, HR and hiring, project and support ops, meetings, e-commerce and marketing workflows."
+  },
   "shopping": {
     "track": "digital",
     "description": "Commerce: comparing, purchasing, returning, refunds, price tracking."
