@@ -226,6 +226,6 @@ Recipe content is CC-BY-4.0: training (including commercial) is fine with attrib
 
 Code: [MIT](LICENSE) · Content: [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
 
-**⭐ Star this repo if your agent ever confidently walked the wrong way out of a subway station.**
+**⭐ Star this repo if your agent ever confidently clicked "Confirm" before reading the total, or hallucinated a step that doesn't exist.**
 
 </div>
