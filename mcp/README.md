@@ -53,6 +53,6 @@ and all.
 
 - Recipes are parsed with the repo's own parser (`../scripts/export.py`), so what the agent
   reads never drifts from what the validator enforces.
-- The whole corpus loads into memory once at startup (~1,300 small markdown files); no network,
+- The whole corpus loads into memory once at startup (~1,500 small markdown files); no network,
   no database.
 - Content is CC BY 4.0 — see the repo [LICENSE](../LICENSE).
