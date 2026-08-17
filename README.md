@@ -8,10 +8,10 @@
 
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Recipes](https://img.shields.io/badge/recipes-1637-brightgreen.svg)](INDEX.md)
+[![Recipes](https://img.shields.io/badge/recipes-1737-brightgreen.svg)](INDEX.md)
 [![Journeys](https://img.shields.io/badge/journeys-4-00b3b3.svg)](journeys/)
 [![Packs](https://img.shields.io/badge/packs-8-ff8c00.svg)](packs/)
-[![Domains](https://img.shields.io/badge/domains-12-blueviolet.svg)](domains.json)
+[![Domains](https://img.shields.io/badge/domains-13-blueviolet.svg)](domains.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](CONTRIBUTING.md)
 
 [**Use it**](#use) · [**Why**](#why) · [**What's inside**](#inside) · [**Packs**](#packs) · [**Journeys**](#journeys) · [**Quick start**](#quickstart) · [**Roadmap**](#roadmap) · [**Contributing**](#contributing) · [**Citing**](#citing)
@@ -175,6 +175,14 @@ create an account · log in · enable 2FA · recover a password · delete an acc
 </details>
 
 <details>
+<summary><b>💼 Business ops — <code>business/</code></b> (atomic workflows an agent can run end-to-end)</summary>
+<br>
+
+**Invoicing & books:** create an invoice · send a payment reminder · reconcile a statement · record an expense · issue a refund · P&L report · **CRM & sales:** add a lead · move a deal stage · log a call · forecast sales · **HR & hiring:** post a job · screen a resume · send an offer · run payroll · onboard a hire · **Project & support:** create a project · triage a ticket · run a standup · close a sprint · **Meetings, marketing & e-commerce:** schedule across time zones · set up an email campaign · process an order · handle a chargeback · update inventory
+
+</details>
+
+<details>
 <summary><b>🚇 Physical & services — <code>transit/</code> <code>travel/</code> <code>communication/</code> <code>government/</code> <code>healthcare/</code> <code>housing/</code></b></summary>
 <br>
 
@@ -233,7 +241,7 @@ Export the planning traces with `python3 scripts/export.py --format journeys`. N
 <a id="roadmap"></a>
 ## 🗺️ Roadmap
 
-The corpus spans **1637 recipes across all 12 domains** and keeps growing. Where help lands hardest:
+The corpus spans **1737 recipes across all 13 domains** and keeps growing. Where help lands hardest:
 
 - [ ] Locale variant packs: `jp-tokyo`, `cn-beijing`, `de-berlin`, and yours
 - [ ] `reviewed` and `verified` promotions (agent-executability evidence; see CONTRIBUTING)
