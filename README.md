@@ -13,7 +13,7 @@
 [![Domains](https://img.shields.io/badge/domains-12-blueviolet.svg)](domains.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](CONTRIBUTING.md)
 
-[**Use it**](#use) · [**Why**](#why) · [**What's inside**](#inside) · [**Quick start**](#quickstart) · [**Roadmap**](#roadmap) · [**Contributing**](#contributing) · [**Citing**](#citing)
+[**Use it**](#use) · [**Why**](#why) · [**What's inside**](#inside) · [**Journeys**](#journeys) · [**Quick start**](#quickstart) · [**Roadmap**](#roadmap) · [**Contributing**](#contributing) · [**Citing**](#citing)
 
 </div>
 
@@ -179,11 +179,23 @@ ride a subway · take a bus · hail a rideshare · navigate with maps · book a 
 
 </details>
 
-### 🗺️ Journeys — long-horizon tasks
-
-Some tasks a single recipe can't hold: they span months, wait on third parties, accumulate state, and force re-planning — buying a home, recovering from identity theft, getting out of debt, switching jobs. A [**journey**](journeys/) is a temporal DAG whose leaf nodes are the recipes above. Each milestone carries a gate, a wait, a checkable verify, and a re-plan trigger — and **every leaf is a real recipe id, machine-checked** by `scripts/validate_journeys.py`, so a journey can't decay into a listicle. Counted and validated separately from recipes.
-
 📊 Live coverage anytime: `python3 scripts/stats.py`
+
+---
+
+<a id="journeys"></a>
+## 🗺️ Journeys — long-horizon tasks
+
+Some tasks a single recipe can't hold: they span months, wait on third parties, accumulate state, and force **re-planning** when new information arrives. A [**journey**](journeys/) is a temporal DAG whose leaf nodes are the recipes above — each milestone carries a **gate** (what unblocks it), a **wait** (the third-party clock), a checkable **verify**, and a **re-plan trigger**. And **every leaf is a real recipe id, machine-checked** by [`scripts/validate_journeys.py`](scripts/validate_journeys.py) — 66 references across the four below, all resolving — so a journey can't decay into a listicle. Counted and validated separately from recipes.
+
+| Journey | Horizon | Milestones | What's hard about it |
+|---|---|---|---|
+| [`recover-from-identity-theft`](journeys/recover-from-identity-theft.md) | 1mo–12mo | 8 | parallel bureau tracks, 30-day dispute clocks, a monitoring loop that can restart everything |
+| [`buy-a-home`](journeys/buy-a-home.md) | 2mo–12mo | 7 | irreversible offer and closing; financing gated on appraisal + underwriting |
+| [`get-out-of-debt`](journeys/get-out-of-debt.md) | 3mo–36mo | 6 | a control loop, not a one-shot; reward delayed over years |
+| [`job-search-and-switch`](journeys/job-search-and-switch.md) | 4wk–4mo | 6 | never resign before the offer is signed; constant re-planning |
+
+Export the planning traces with `python3 scripts/export.py --format journeys`. New journeys welcome — see [`journeys/README.md`](journeys/README.md).
 
 ---
 
