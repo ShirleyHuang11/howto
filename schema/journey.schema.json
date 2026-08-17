@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "howto journey frontmatter",
+  "description": "A journey is a long-horizon task: a temporal DAG whose leaf nodes are recipes. This schema covers the YAML frontmatter; body structure and leaf-resolution are enforced by scripts/validate_journeys.py.",
+  "type": "object",
+  "required": ["name", "kind", "domain", "locale", "horizon", "difficulty", "risk", "actors", "status", "last_verified"],
+  "additionalProperties": true,
+  "properties": {
+    "name": {"type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "description": "kebab-case; must equal the filename stem"},
+    "kind": {"const": "journey"},
+    "domain": {"type": "string", "description": "primary domain; a journey may reference recipes from many domains"},
+    "locale": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^[a-z0-9-]+$"}},
+    "horizon": {"type": "string", "pattern": "^[0-9]+(min|h|d|wk|mo|yr)(-[0-9]+(min|h|d|wk|mo|yr))?$", "description": "elapsed calendar time, e.g. 2wk-3mo, 6mo-2yr"},
+    "difficulty": {"enum": ["basic", "intermediate", "advanced"]},
+    "risk": {"enum": ["low", "medium", "high"]},
+    "actors": {"type": "array", "minItems": 1, "items": {"type": "string"}, "description": "other parties in the loop"},
+    "status": {"enum": ["draft", "reviewed", "verified"]},
+    "last_verified": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"}
+  }
+}

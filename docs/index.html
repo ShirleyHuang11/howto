@@ -81,6 +81,10 @@
 </header>
 <div class="controls"><div class="inner">
   <input id="q" type="search" placeholder="Search tasks — e.g. “change a tire”, “toddler”, “2FA”, “deep fry”…" autocomplete="off">
+  <div class="chips" id="modeChips">
+    <div class="chip on" data-mode="recipes">📖 Recipes</div>
+    <div class="chip" data-mode="journeys">🗺️ Journeys</div>
+  </div>
   <div class="chips" id="domainChips"></div>
 </div></div>
 <main>
@@ -94,14 +98,22 @@
 </footer>
 <script>
 const REPO = "https://github.com/ShirleyHuang11/howto/blob/main/";
-let DATA = [], DOMAINS = {}, activeDomain = null, q = "";
+let DATA = [], DOMAINS = {}, JOURNEYS = [], ID2PATH = {}, activeDomain = null, q = "", MODE = "recipes";
 const el = id => document.getElementById(id);
 
 fetch("recipes.json").then(r => r.json()).then(d => {
-  DATA = d.recipes; DOMAINS = d.domains;
+  DATA = d.recipes; DOMAINS = d.domains; JOURNEYS = d.journeys || [];
+  DATA.forEach(r => { ID2PATH[r.id] = r.path; });
   el("total").textContent = d.count.toLocaleString();
   el("loading").style.display = "none";
   buildChips();
+  el("modeChips").addEventListener("click", e => {
+    const c = e.target.closest(".chip"); if (!c) return;
+    MODE = c.dataset.mode;
+    [...el("modeChips").children].forEach(x => x.classList.toggle("on", x === c));
+    el("domainChips").style.display = MODE === "journeys" ? "none" : "";
+    render();
+  });
   render();
 }).catch(e => { el("loading").textContent = "Could not load recipes.json — " + e; });
 
@@ -142,6 +154,7 @@ function score(r, terms) {
 }
 
 function render() {
+  if (MODE === "journeys") return renderJourneys();
   const terms = q ? q.split(/\s+/) : [];
   let rows = DATA;
   if (activeDomain) rows = rows.filter(r => r.domain === activeDomain);
@@ -207,6 +220,84 @@ function asContext(r) {
   }
   if (r.verification) { L.push("", "Done when: " + r.verification); }
   L.push("", "Source: " + REPO + r.path);
+  return L.join("\n");
+}
+
+function jScore(j, terms) {
+  if (!terms.length) return 1;
+  const hay = (j.journey_id + " " + j.goal + " " + j.domain + " " +
+    j.milestones.map(m => m.title).join(" ")).toLowerCase();
+  let s = 0;
+  for (const t of terms) { if (!hay.includes(t)) return 0; s += 1; }
+  return s;
+}
+
+function renderJourneys() {
+  const terms = q ? q.split(/\s+/) : [];
+  const rows = JOURNEYS.map(j => [jScore(j, terms), j]).filter(x => x[0] > 0).map(x => x[1]);
+  el("count").textContent = rows.length + " long-horizon journey" + (rows.length === 1 ? "" : "s")
+    + (q ? ' matching “' + q + '”' : "") + " — each a DAG over the recipes";
+  const out = el("results"); out.innerHTML = "";
+  for (const j of rows) out.appendChild(journeyCard(j));
+}
+
+function journeyCard(j) {
+  const name = j.journey_id.replace("journeys/", "").replace(/-/g, " ");
+  const d = document.createElement("details"); d.className = "card";
+  const riskBadge = (j.risk === "high" || j.risk === "medium")
+    ? '<span class="badge risk-' + j.risk + '">' + j.risk + " risk</span>" : "";
+  d.innerHTML =
+    '<summary><span class="title">🗺️ ' + esc(name) + '</span>' +
+    '<span class="badge dom">' + esc(j.domain) + '</span>' +
+    '<span class="badge">' + esc(j.horizon) + '</span>' +
+    '<span class="badge">' + j.milestones.length + ' milestones</span>' + riskBadge +
+    '<span class="g">' + esc(j.goal) + '</span></summary>';
+  const body = document.createElement("div"); body.className = "body";
+  let ms = "";
+  for (const m of j.milestones) {
+    const dos = (m.recipes || []).map(id => ID2PATH[id]
+      ? '<a href="' + REPO + ID2PATH[id] + '" target="_blank" rel="noopener">' + id + "</a>"
+      : "<code>" + id + "</code>").join(", ");
+    ms += '<div style="margin:12px 0;padding-left:10px;border-left:2px solid var(--border)">' +
+      '<b>' + esc(m.id) + " — " + esc(m.title) + "</b>" +
+      (m.gate ? '<div class="exp"><b>Gate:</b> ' + esc(m.gate) + "</div>" : "") +
+      (dos ? '<div class="exp"><b>Do:</b> ' + dos + "</div>" : "") +
+      (m.wait ? '<div class="exp"><b>Wait:</b> ' + esc(m.wait) + "</div>" : "") +
+      (m.verify ? '<div class="exp"><b>Verify:</b> ' + esc(m.verify) + "</div>" : "") +
+      (m.replan ? '<div class="irr">Re-plan if: ' + esc(m.replan) + "</div>" : "") +
+      "</div>";
+  }
+  body.innerHTML = '<div class="sec">Milestones (a DAG — see the graph on GitHub)</div>' + ms +
+    '<div class="actions">' +
+      '<button class="act jcopy">📋 Copy as agent plan</button>' +
+      '<a class="act" href="' + REPO + "journeys/" + j.journey_id.replace("journeys/", "") +
+        '.md" target="_blank" rel="noopener">View full journey on GitHub ↗</a>' +
+    '</div>' +
+    '<div class="meta">horizon: ' + esc(j.horizon) + ' · leaves: ' + j.recipe_leaves.length +
+      ' recipes · actors: ' + (j.actors || []).map(esc).join(", ") + "</div>";
+  body.querySelector(".jcopy").addEventListener("click", ev => {
+    navigator.clipboard.writeText(asJourneyPlan(j)).then(() => {
+      ev.target.textContent = "✓ Copied"; ev.target.classList.add("done");
+      setTimeout(() => { ev.target.textContent = "📋 Copy as agent plan"; ev.target.classList.remove("done"); }, 1600);
+    });
+  });
+  d.appendChild(body);
+  return d;
+}
+
+function asJourneyPlan(j) {
+  const name = j.journey_id.replace("journeys/", "").replace(/-/g, " ");
+  const L = ["Long-horizon plan: " + name + " (" + j.journey_id + ")", "",
+    "Goal: " + j.goal, "Horizon: " + j.horizon, "", "Milestones (a DAG — mind the gates):"];
+  for (const m of j.milestones) {
+    L.push("", m.id + " — " + m.title);
+    if (m.gate) L.push("  Gate: " + m.gate);
+    if ((m.recipes || []).length) L.push("  Do (recipes): " + m.recipes.join(", "));
+    if (m.wait) L.push("  Wait: " + m.wait);
+    if (m.verify) L.push("  Verify: " + m.verify);
+    if (m.replan) L.push("  Re-plan if: " + m.replan);
+  }
+  L.push("", "Source: " + REPO + "journeys/" + j.journey_id.replace("journeys/", "") + ".md");
   return L.join("\n");
 }
 </script>

@@ -9,6 +9,7 @@
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Recipes](https://img.shields.io/badge/recipes-1337-brightgreen.svg)](INDEX.md)
+[![Journeys](https://img.shields.io/badge/journeys-4-00b3b3.svg)](journeys/)
 [![Domains](https://img.shields.io/badge/domains-12-blueviolet.svg)](domains.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](CONTRIBUTING.md)
 
@@ -93,6 +94,7 @@ The schema turns prose into training substrate. One corpus yields, simultaneousl
 | Inference-time skill library (RAG) | Recipe chunks |
 | Contamination-controlled evals | Held-out recipes and locale variants |
 | Robot task plans & sim task generation | Embodied `objects` / `affordances` / `workspace` / `safety` |
+| **Long-horizon planning traces** | **[Journeys](journeys/): milestone DAGs over recipes** (gates, waits, re-plan triggers) |
 
 ---
 
@@ -176,6 +178,10 @@ create an account · log in · enable 2FA · recover a password · delete an acc
 ride a subway · take a bus · hail a rideshare · navigate with maps · book a flight · check in · book a hotel · send a package · schedule a meeting · renew a passport · book a doctor's appointment · refill a prescription · set up utilities
 
 </details>
+
+### 🗺️ Journeys — long-horizon tasks
+
+Some tasks a single recipe can't hold: they span months, wait on third parties, accumulate state, and force re-planning — buying a home, recovering from identity theft, getting out of debt, switching jobs. A [**journey**](journeys/) is a temporal DAG whose leaf nodes are the recipes above. Each milestone carries a gate, a wait, a checkable verify, and a re-plan trigger — and **every leaf is a real recipe id, machine-checked** by `scripts/validate_journeys.py`, so a journey can't decay into a listicle. Counted and validated separately from recipes.
 
 📊 Live coverage anytime: `python3 scripts/stats.py`
 

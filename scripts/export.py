@@ -134,11 +134,72 @@ def to_eval(recipe):
     return spec
 
 
+def _journey_field(block, label):
+    m = re.search(r"\*\*%s:\*\*\s*(.*?)(?=\n\s*- \*\*|\Z)" % re.escape(label), block, re.S)
+    return re.sub(r"\s+", " ", m.group(1)).strip() if m else None
+
+
+def load_journey(path):
+    with open(path) as f:
+        text = f.read()
+    if not text.startswith("---\n"):
+        return None
+    end = text.find("\n---\n", 4)
+    if end == -1:
+        return None
+    meta = yaml.safe_load(text[4:end])
+    if not isinstance(meta, dict) or meta.get("kind") != "journey":
+        return None
+    sections = parse_sections(text[end + 5:])
+    chunks = re.split(r"(?m)^### +(M\d+)\s*—\s*(.+?)\s*$", sections.get("Milestones", ""))
+    milestones = []
+    for i in range(1, len(chunks) - 2, 3):
+        mid, title, block = chunks[i], chunks[i + 1], chunks[i + 2]
+        do = re.findall(r"`([a-z0-9-]+(?:/[a-z0-9-]+)+)`", _journey_field(block, "Do") or "")
+        milestones.append({
+            "id": mid, "title": title.strip(),
+            "track": _journey_field(block, "Track"),
+            "gate": _journey_field(block, "Gate"),
+            "recipes": do,
+            "wait": _journey_field(block, "Wait"),
+            "verify": _journey_field(block, "Verify"),
+            "replan": _journey_field(block, "Re-plan if"),
+        })
+    return {
+        "journey_id": "journeys/%s" % meta.get("name"),
+        "goal": sections.get("Goal", "").strip(),
+        "outcome_state": sections.get("Outcome state", "").strip(),
+        "domain": meta.get("domain"), "horizon": meta.get("horizon"),
+        "risk": meta.get("risk"), "actors": meta.get("actors"),
+        "milestones": milestones,
+        "recipe_leaves": sorted({r for ms in milestones for r in ms["recipes"]}),
+        "replan_triggers": sections.get("Re-plan triggers", "").strip(),
+    }
+
+
+def collect_journeys():
+    jdir = os.path.join(ROOT, "journeys")
+    out = []
+    if os.path.isdir(jdir):
+        for n in sorted(os.listdir(jdir)):
+            if n.endswith(".md") and n not in ("README.md", "TEMPLATE.md"):
+                j = load_journey(os.path.join(jdir, n))
+                if j:
+                    out.append(j)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--format", choices=["json", "sft", "eval"], default="json")
+    ap.add_argument("--format", choices=["json", "sft", "eval", "journeys"], default="json")
     ap.add_argument("paths", nargs="*")
     args = ap.parse_args()
+    if args.format == "journeys":
+        journeys = collect_journeys()
+        for j in journeys:
+            print(json.dumps(j, ensure_ascii=False, default=str))
+        print("exported %d journeys" % len(journeys), file=sys.stderr)
+        return
     recipes = collect(args.paths)
     if args.format == "json":
         json.dump(recipes, sys.stdout, indent=2, ensure_ascii=False, default=str)

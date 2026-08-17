@@ -1399,3 +1399,14 @@
 | [use-an-airport-lounge](travel/use-an-airport-lounge.md) | mixed | low | draft |
 | [use-public-transit-in-a-new-city](travel/use-public-transit-in-a-new-city.md) | mixed | medium | draft |
 
+## journeys (4) — long-horizon tasks
+
+Temporal DAGs over the recipes above; see [`journeys/`](journeys/README.md).
+
+| Journey | Horizon | Milestones | Risk | Status |
+|---|---|---|---|---|
+| [buy-a-home](journeys/buy-a-home.md) | 2mo-12mo | 7 | high | draft |
+| [get-out-of-debt](journeys/get-out-of-debt.md) | 3mo-36mo | 6 | medium | draft |
+| [job-search-and-switch](journeys/job-search-and-switch.md) | 4wk-4mo | 6 | medium | draft |
+| [recover-from-identity-theft](journeys/recover-from-identity-theft.md) | 1mo-12mo | 8 | high | draft |
+

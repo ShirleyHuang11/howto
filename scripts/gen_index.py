@@ -6,6 +6,7 @@ Run after adding recipes; CI and the README badge count come from the same walk.
 """
 import json
 import os
+import re
 from collections import defaultdict
 
 import yaml
@@ -59,9 +60,37 @@ def main():
                 meta.get("status", "-")))
         lines.append("")
 
+    # Journeys (long-horizon tasks) — a small curated tier, counted separately from recipes.
+    jdir = os.path.join(ROOT, "journeys")
+    journeys = []
+    if os.path.isdir(jdir):
+        for n in sorted(os.listdir(jdir)):
+            if not n.endswith(".md") or n in ("README.md", "TEMPLATE.md"):
+                continue
+            meta = frontmatter(os.path.join(jdir, n))
+            if meta.get("kind") != "journey":
+                continue
+            with open(os.path.join(jdir, n)) as f:
+                n_ms = len(re.findall(r"^### +M\d+\b", f.read(), re.M))
+            journeys.append(("journeys/" + n, meta, n_ms))
+    if journeys:
+        lines.append("## journeys (%d) — long-horizon tasks" % len(journeys))
+        lines.append("")
+        lines.append("Temporal DAGs over the recipes above; see [`journeys/`](journeys/README.md).")
+        lines.append("")
+        lines.append("| Journey | Horizon | Milestones | Risk | Status |")
+        lines.append("|---|---|---|---|---|")
+        for rel, meta, n_ms in journeys:
+            name = meta.get("name", os.path.splitext(os.path.basename(rel))[0])
+            lines.append("| [%s](%s) | %s | %d | %s | %s |" % (
+                name, rel, meta.get("horizon", "-"), n_ms, meta.get("risk", "-"),
+                meta.get("status", "-")))
+        lines.append("")
+
     with open(os.path.join(ROOT, "INDEX.md"), "w") as f:
         f.write("\n".join(lines) + "\n")
-    print("INDEX.md written: %d recipes across %d domains" % (total, len(rows)))
+    print("INDEX.md written: %d recipes across %d domains, %d journeys"
+          % (total, len(rows), len(journeys)))
 
 
 if __name__ == "__main__":
