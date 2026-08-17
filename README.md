@@ -8,7 +8,7 @@
 
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Recipes](https://img.shields.io/badge/recipes-1537-brightgreen.svg)](INDEX.md)
+[![Recipes](https://img.shields.io/badge/recipes-1637-brightgreen.svg)](INDEX.md)
 [![Journeys](https://img.shields.io/badge/journeys-4-00b3b3.svg)](journeys/)
 [![Packs](https://img.shields.io/badge/packs-8-ff8c00.svg)](packs/)
 [![Domains](https://img.shields.io/badge/domains-12-blueviolet.svg)](domains.json)
@@ -170,6 +170,8 @@ safety: {sharp_objects: true, fragile: [glasses], human_proximity: pause}
 
 create an account · log in · enable 2FA · recover a password · delete an account · security review · buy & return a product · track a delivery · compare before buying · install an app · unsubscribe · back up files · connect to wifi · update safely · pay a bill · dispute a charge · send money to a friend
 
+**Computer-use atomics** (the leaf layer agents can perform directly): rename a file · find text on a page · copy-paste · reopen a closed tab · a spreadsheet formula · crop an image · cc/bcc an email · take a region screenshot — 100 single-action primitives under `digital/`.
+
 </details>
 
 <details>
@@ -231,7 +233,7 @@ Export the planning traces with `python3 scripts/export.py --format journeys`. N
 <a id="roadmap"></a>
 ## 🗺️ Roadmap
 
-The corpus spans **1537 recipes across all 12 domains** and keeps growing. Where help lands hardest:
+The corpus spans **1637 recipes across all 12 domains** and keeps growing. Where help lands hardest:
 
 - [ ] Locale variant packs: `jp-tokyo`, `cn-beijing`, `de-berlin`, and yours
 - [ ] `reviewed` and `verified` promotions (agent-executability evidence; see CONTRIBUTING)
