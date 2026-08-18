@@ -197,7 +197,7 @@ ride a subway · take a bus · hail a rideshare · navigate with maps · book a 
 <a id="packs"></a>
 ## 🎒 Packs — grab a whole kit, install it as a skill
 
-Nobody assembles a scam-defense toolkit from a 1,500-recipe index. A [**pack**](packs/) is a curated, cross-domain kit for one real situation — and it installs into your agent as a self-contained **skill** in one command:
+Nobody assembles a scam-defense toolkit from a 1,700-recipe index. A [**pack**](packs/) is a curated, cross-domain kit for one real situation — and it installs into your agent as a self-contained **skill** in one command:
 
 ```bash
 python3 scripts/build_skills.py scam-and-fraud-defense   # → packs/skills/.../SKILL.md
