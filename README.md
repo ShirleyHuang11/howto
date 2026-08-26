@@ -8,7 +8,7 @@
 
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Recipes](https://img.shields.io/badge/recipes-1737-brightgreen.svg)](INDEX.md)
+[![Recipes](https://img.shields.io/badge/recipes-1937-brightgreen.svg)](INDEX.md)
 [![Journeys](https://img.shields.io/badge/journeys-4-00b3b3.svg)](journeys/)
 [![Packs](https://img.shields.io/badge/packs-8-ff8c00.svg)](packs/)
 [![Domains](https://img.shields.io/badge/domains-13-blueviolet.svg)](domains.json)
@@ -172,13 +172,15 @@ create an account · log in · enable 2FA · recover a password · delete an acc
 
 **Computer-use atomics** (the leaf layer agents can perform directly): rename a file · find text on a page · copy-paste · reopen a closed tab · a spreadsheet formula · crop an image · cc/bcc an email · take a region screenshot — 100 single-action primitives under `digital/`.
 
+**Agentic commerce** (buy/sell/transact flows written as verifiable-reward tasks): sell on a marketplace · price an item to sell fast · stack coupons & cashback · bid on an auction · checkout under a budget · audit subscriptions · negotiate an APR or a bill · maximize card rewards · book the cheapest fare · use a virtual card — 200 transactional recipes across `shopping/`, `finance/optimize/`, `travel/booking/`, `digital/transactions/`, each with an explicit target and a checkable end-state.
+
 </details>
 
 <details>
 <summary><b>💼 Business ops — <code>business/</code></b> (atomic workflows an agent can run end-to-end)</summary>
 <br>
 
-**Invoicing & books:** create an invoice · send a payment reminder · reconcile a statement · record an expense · issue a refund · P&L report · **CRM & sales:** add a lead · move a deal stage · log a call · forecast sales · **HR & hiring:** post a job · screen a resume · send an offer · run payroll · onboard a hire · **Project & support:** create a project · triage a ticket · run a standup · close a sprint · **Meetings, marketing & e-commerce:** schedule across time zones · set up an email campaign · process an order · handle a chargeback · update inventory
+**Invoicing & books:** create an invoice · send a payment reminder · reconcile a statement · record an expense · issue a refund · P&L report · **CRM & sales:** add a lead · move a deal stage · log a call · forecast sales · **HR & hiring:** post a job · screen a resume · send an offer · run payroll · onboard a hire · **Project & support:** create a project · triage a ticket · run a standup · close a sprint · **Meetings, marketing & e-commerce:** schedule across time zones · set up an email campaign · process an order · handle a chargeback · update inventory · reprice inventory · run a shopping ad · fulfill a dropship order · calculate a product margin · flag a fraudulent order
 
 </details>
 
@@ -186,7 +188,7 @@ create an account · log in · enable 2FA · recover a password · delete an acc
 <summary><b>🚇 Physical & services — <code>transit/</code> <code>travel/</code> <code>communication/</code> <code>government/</code> <code>healthcare/</code> <code>housing/</code></b></summary>
 <br>
 
-ride a subway · take a bus · hail a rideshare · navigate with maps · book a flight · check in · book a hotel · send a package · schedule a meeting · renew a passport · book a doctor's appointment · refill a prescription · set up utilities
+ride a subway · take a bus · hail a rideshare · navigate with maps · book a flight · book the cheapest fare for your dates · rebook after a price drop · claim delayed-flight compensation · check in · book a hotel · send a package · schedule a meeting · renew a passport · book a doctor's appointment · refill a prescription · set up utilities
 
 </details>
 
@@ -197,7 +199,7 @@ ride a subway · take a bus · hail a rideshare · navigate with maps · book a 
 <a id="packs"></a>
 ## 🎒 Packs — grab a whole kit, install it as a skill
 
-Nobody assembles a scam-defense toolkit from a 1,700-recipe index. A [**pack**](packs/) is a curated, cross-domain kit for one real situation — and it installs into your agent as a self-contained **skill** in one command:
+Nobody assembles a scam-defense toolkit from a 1,900-recipe index. A [**pack**](packs/) is a curated, cross-domain kit for one real situation — and it installs into your agent as a self-contained **skill** in one command:
 
 ```bash
 python3 scripts/build_skills.py scam-and-fraud-defense   # → packs/skills/.../SKILL.md
@@ -241,7 +243,7 @@ Export the planning traces with `python3 scripts/export.py --format journeys`. N
 <a id="roadmap"></a>
 ## 🗺️ Roadmap
 
-The corpus spans **1737 recipes across all 13 domains** and keeps growing. Where help lands hardest:
+The corpus spans **1937 recipes across all 13 domains** and keeps growing. Where help lands hardest:
 
 - [ ] Locale variant packs: `jp-tokyo`, `cn-beijing`, `de-berlin`, and yours
 - [ ] `reviewed` and `verified` promotions (agent-executability evidence; see CONTRIBUTING)

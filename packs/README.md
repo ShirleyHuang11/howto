@@ -3,7 +3,7 @@
 A **pack** is a curated, cross-domain kit for one real situation — the "don't get scammed" kit,
 the "new apartment" kit, the "robot manipulation primitives" kit. It bundles the handful of
 recipes (and sometimes a [journey](../journeys/)) you actually need, so you — or your agent —
-don't have to assemble them from a 1,700-recipe index.
+don't have to assemble them from a 1,900-recipe index.
 
 Every pack's leaves are **machine-checked to resolve** to real recipes by
 [`scripts/validate_packs.py`](../scripts/validate_packs.py).
