@@ -8,7 +8,7 @@
 
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Recipes](https://img.shields.io/badge/recipes-1937-brightgreen.svg)](INDEX.md)
+[![Recipes](https://img.shields.io/badge/recipes-2137-brightgreen.svg)](INDEX.md)
 [![Journeys](https://img.shields.io/badge/journeys-4-00b3b3.svg)](journeys/)
 [![Packs](https://img.shields.io/badge/packs-8-ff8c00.svg)](packs/)
 [![Domains](https://img.shields.io/badge/domains-13-blueviolet.svg)](domains.json)
@@ -170,6 +170,8 @@ safety: {sharp_objects: true, fragile: [glasses], human_proximity: pause}
 
 create an account · log in · enable 2FA · recover a password · delete an account · security review · buy & return a product · track a delivery · compare before buying · install an app · unsubscribe · back up files · connect to wifi · update safely · pay a bill · dispute a charge · send money to a friend
 
+**Account security & privacy** (`accounts/security/`): migrate 2FA to a new phone · recover a hacked email · secure an account after a breach · find & remotely wipe a lost device · set up a legacy contact · revoke third-party app access · opt out of data-broker sites — the identity/access flows an agent has to get exactly right.
+
 **Computer-use atomics** (the leaf layer agents can perform directly): rename a file · find text on a page · copy-paste · reopen a closed tab · a spreadsheet formula · crop an image · cc/bcc an email · take a region screenshot — 100 single-action primitives under `digital/`.
 
 **Agentic commerce** (buy/sell/transact flows written as verifiable-reward tasks): sell on a marketplace · price an item to sell fast · stack coupons & cashback · bid on an auction · checkout under a budget · audit subscriptions · negotiate an APR or a bill · maximize card rewards · book the cheapest fare · use a virtual card — 200 transactional recipes across `shopping/`, `finance/optimize/`, `travel/booking/`, `digital/transactions/`, each with an explicit target and a checkable end-state.
@@ -190,6 +192,8 @@ create an account · log in · enable 2FA · recover a password · delete an acc
 
 ride a subway · take a bus · hail a rideshare · navigate with maps · book a flight · book the cheapest fare for your dates · rebook after a price drop · claim delayed-flight compensation · check in · book a hotel · send a package · schedule a meeting · renew a passport · book a doctor's appointment · refill a prescription · set up utilities
 
+**Car care** (`transit/vehicle/`): change a flat · jump-start a dead battery · check tire pressure & oil · replace wipers · handle a blowout or an overheating engine · what to do after a fender bender — hands-on, safety-first (hazard steps marked). **Civic & legal** (`government/civic/`): REAL ID · passports · small-claims filing · car titles · vital records · FOIA. **Health navigation** (`healthcare/navigation/`): patient portals · specialist referrals · advance directives · pre-op & discharge · financial assistance — the paperwork and coordination around care, not just first aid.
+
 </details>
 
 📊 Live coverage anytime: `python3 scripts/stats.py`
@@ -199,7 +203,7 @@ ride a subway · take a bus · hail a rideshare · navigate with maps · book a 
 <a id="packs"></a>
 ## 🎒 Packs — grab a whole kit, install it as a skill
 
-Nobody assembles a scam-defense toolkit from a 1,900-recipe index. A [**pack**](packs/) is a curated, cross-domain kit for one real situation — and it installs into your agent as a self-contained **skill** in one command:
+Nobody assembles a scam-defense toolkit from a 2,100-recipe index. A [**pack**](packs/) is a curated, cross-domain kit for one real situation — and it installs into your agent as a self-contained **skill** in one command:
 
 ```bash
 python3 scripts/build_skills.py scam-and-fraud-defense   # → packs/skills/.../SKILL.md
@@ -243,7 +247,7 @@ Export the planning traces with `python3 scripts/export.py --format journeys`. N
 <a id="roadmap"></a>
 ## 🗺️ Roadmap
 
-The corpus spans **1937 recipes across all 13 domains** and keeps growing. Where help lands hardest:
+The corpus spans **2137 recipes across all 13 domains** and keeps growing. Where help lands hardest:
 
 - [ ] Locale variant packs: `jp-tokyo`, `cn-beijing`, `de-berlin`, and yours
 - [ ] `reviewed` and `verified` promotions (agent-executability evidence; see CONTRIBUTING)
