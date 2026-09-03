@@ -1,6 +1,6 @@
 # howto MCP server 🤖🦾
 
-Give your agent the **verified steps for 2,100+ everyday tasks** — at inference time, over the
+Give your agent the **verified steps for 2,300+ everyday tasks** — at inference time, over the
 [Model Context Protocol](https://modelcontextprotocol.io). Instead of guessing (and confidently
 skipping the step that actually matters), the agent searches the corpus and reads the recipe:
 every step with its **expected observation**, ⚠ markers on **irreversible** steps, failure
@@ -53,6 +53,6 @@ and all.
 
 - Recipes are parsed with the repo's own parser (`../scripts/export.py`), so what the agent
   reads never drifts from what the validator enforces.
-- The whole corpus loads into memory once at startup (~2,100 small markdown files); no network,
+- The whole corpus loads into memory once at startup (~2,300 small markdown files); no network,
   no database.
 - Content is CC BY 4.0 — see the repo [LICENSE](../LICENSE).

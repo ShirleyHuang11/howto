@@ -8,10 +8,10 @@
 
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Recipes](https://img.shields.io/badge/recipes-2137-brightgreen.svg)](INDEX.md)
+[![Recipes](https://img.shields.io/badge/recipes-2337-brightgreen.svg)](INDEX.md)
 [![Journeys](https://img.shields.io/badge/journeys-4-00b3b3.svg)](journeys/)
 [![Packs](https://img.shields.io/badge/packs-8-ff8c00.svg)](packs/)
-[![Domains](https://img.shields.io/badge/domains-13-blueviolet.svg)](domains.json)
+[![Domains](https://img.shields.io/badge/domains-14-blueviolet.svg)](domains.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](CONTRIBUTING.md)
 
 [**Use it**](#use) · [**Why**](#why) · [**What's inside**](#inside) · [**Packs**](#packs) · [**Journeys**](#journeys) · [**Quick start**](#quickstart) · [**Roadmap**](#roadmap) · [**Contributing**](#contributing) · [**Citing**](#citing)
@@ -139,6 +139,7 @@ Goal → Preconditions → Steps (every step ends with → *Expect:* …)
 | `home/` | do the laundry · make a bed · sweep & mop · vacuum · clean a bathroom · sort recycling · unclog a drain · change a lightbulb · change batteries |
 | `social/` | pay at a cashier · wait in line · order at a restaurant · split a bill · answer a phone call · greet a neighbor · give directions · ask for help in a store · small talk · borrow & return |
 | `errands/` | use an ATM · mail a letter · refuel a car · vending machine · self-checkout · buy groceries · get a haircut · public library |
+| `parenting/` | feed & burp a newborn · swaddle · safe infant sleep · introduce solids · potty-train · handle a tantrum · teach a kid to tie shoes / ride a bike · pack a school lunch · hire a babysitter |
 
 </details>
 
@@ -187,12 +188,20 @@ create an account · log in · enable 2FA · recover a password · delete an acc
 </details>
 
 <details>
+<summary><b>🎓 Learning & academics — <code>education/</code></b> (the 14th domain)</summary>
+<br>
+
+**Study skills:** active recall · spaced repetition · Cornell notes · the Pomodoro technique · make a one-page study sheet · **Test prep:** SAT · ACT · GRE · GMAT · TOEFL/IELTS · manage test anxiety · **Language learning:** set a goal · daily habit · language exchange · comprehensible input · **Academic writing:** thesis statement · literature review · APA/MLA/Chicago citations (with copyable examples) · avoid plagiarism · **Admissions & aid:** build a college list · Common App essay · FAFSA · scholarships · compare aid offers · grad-school SOP · **Online & K-12:** finish a MOOC · earn a certificate · help with homework · IEP/504 meetings
+
+</details>
+
+<details>
 <summary><b>🚇 Physical & services — <code>transit/</code> <code>travel/</code> <code>communication/</code> <code>government/</code> <code>healthcare/</code> <code>housing/</code></b></summary>
 <br>
 
 ride a subway · take a bus · hail a rideshare · navigate with maps · book a flight · book the cheapest fare for your dates · rebook after a price drop · claim delayed-flight compensation · check in · book a hotel · send a package · schedule a meeting · renew a passport · book a doctor's appointment · refill a prescription · set up utilities
 
-**Car care** (`transit/vehicle/`): change a flat · jump-start a dead battery · check tire pressure & oil · replace wipers · handle a blowout or an overheating engine · what to do after a fender bender — hands-on, safety-first (hazard steps marked). **Civic & legal** (`government/civic/`): REAL ID · passports · small-claims filing · car titles · vital records · FOIA. **Health navigation** (`healthcare/navigation/`): patient portals · specialist referrals · advance directives · pre-op & discharge · financial assistance — the paperwork and coordination around care, not just first aid.
+**Car care** (`transit/vehicle/`): change a flat · jump-start a dead battery · check tire pressure & oil · replace wipers · handle a blowout or an overheating engine · what to do after a fender bender — hands-on, safety-first (hazard steps marked). **Civic & legal** (`government/civic/`): REAL ID · passports · small-claims filing · car titles · vital records · FOIA. **Health navigation** (`healthcare/navigation/`): patient portals · specialist referrals · advance directives · pre-op & discharge · financial assistance — the paperwork and coordination around care, not just first aid. **Home owning** (`housing/owning/`): mortgage preapproval to closing · sell & stage a home · HVAC/water-heater/roof upkeep · HOA · refinancing · roommate agreements.
 
 </details>
 
@@ -203,7 +212,7 @@ ride a subway · take a bus · hail a rideshare · navigate with maps · book a 
 <a id="packs"></a>
 ## 🎒 Packs — grab a whole kit, install it as a skill
 
-Nobody assembles a scam-defense toolkit from a 2,100-recipe index. A [**pack**](packs/) is a curated, cross-domain kit for one real situation — and it installs into your agent as a self-contained **skill** in one command:
+Nobody assembles a scam-defense toolkit from a 2,300-recipe index. A [**pack**](packs/) is a curated, cross-domain kit for one real situation — and it installs into your agent as a self-contained **skill** in one command:
 
 ```bash
 python3 scripts/build_skills.py scam-and-fraud-defense   # → packs/skills/.../SKILL.md
@@ -247,7 +256,7 @@ Export the planning traces with `python3 scripts/export.py --format journeys`. N
 <a id="roadmap"></a>
 ## 🗺️ Roadmap
 
-The corpus spans **2137 recipes across all 13 domains** and keeps growing. Where help lands hardest:
+The corpus spans **2337 recipes across all 14 domains** and keeps growing. Where help lands hardest:
 
 - [ ] Locale variant packs: `jp-tokyo`, `cn-beijing`, `de-berlin`, and yours
 - [ ] `reviewed` and `verified` promotions (agent-executability evidence; see CONTRIBUTING)
