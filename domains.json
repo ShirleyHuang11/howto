@@ -7,6 +7,10 @@
     "track": "digital",
     "description": "Business operations: invoicing and bookkeeping, CRM and sales, HR and hiring, project and support ops, meetings, e-commerce and marketing workflows."
   },
+  "education": {
+    "track": "mixed",
+    "description": "Learning and academics: study skills and note-taking, test prep, language learning, academic writing and research, college and financial-aid admissions, online courses, and K-12 support and tutoring."
+  },
   "shopping": {
     "track": "digital",
     "description": "Commerce: comparing, purchasing, returning, refunds, price tracking."
@@ -52,7 +56,8 @@
       "home": "Basic home upkeep: change a lightbulb, unclog a drain, sort recycling.",
       "social": "Everyday social scripts: order at a restaurant, pay at a cashier, wait in line, answer a call.",
       "errands": "Out-of-home basics: mail a letter, use an ATM, refuel a car, use a vending machine.",
-      "play": "Fun and leisure: paper airplanes, blanket forts, campfires, kites, stone skipping."
+      "play": "Fun and leisure: paper airplanes, blanket forts, campfires, kites, stone skipping.",
+      "parenting": "Everyday childcare: newborn and baby care, toddler routines, teaching kids basic skills, school and childcare logistics."
     }
   },
   "embodied": {
