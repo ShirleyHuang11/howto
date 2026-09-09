@@ -11,6 +11,10 @@
     "track": "mixed",
     "description": "Learning and academics: study skills and note-taking, test prep, language learning, academic writing and research, college and financial-aid admissions, online courses, and K-12 support and tutoring."
   },
+  "fitness": {
+    "track": "physical",
+    "description": "Exercise and physical training: strength and resistance work, cardio and running, mobility and flexibility, home and bodyweight workouts, sports skills, recovery and injury prevention, and training plans."
+  },
   "shopping": {
     "track": "digital",
     "description": "Commerce: comparing, purchasing, returning, refunds, price tracking."
