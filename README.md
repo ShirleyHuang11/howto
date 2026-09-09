@@ -8,10 +8,10 @@
 
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Recipes](https://img.shields.io/badge/recipes-2337-brightgreen.svg)](INDEX.md)
+[![Recipes](https://img.shields.io/badge/recipes-2537-brightgreen.svg)](INDEX.md)
 [![Journeys](https://img.shields.io/badge/journeys-4-00b3b3.svg)](journeys/)
 [![Packs](https://img.shields.io/badge/packs-8-ff8c00.svg)](packs/)
-[![Domains](https://img.shields.io/badge/domains-14-blueviolet.svg)](domains.json)
+[![Domains](https://img.shields.io/badge/domains-15-blueviolet.svg)](domains.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](CONTRIBUTING.md)
 
 [**Use it**](#use) · [**Why**](#why) · [**What's inside**](#inside) · [**Packs**](#packs) · [**Journeys**](#journeys) · [**Quick start**](#quickstart) · [**Roadmap**](#roadmap) · [**Contributing**](#contributing) · [**Citing**](#citing)
@@ -196,6 +196,14 @@ create an account · log in · enable 2FA · recover a password · delete an acc
 </details>
 
 <details>
+<summary><b>🏋️ Fitness & exercise — <code>fitness/</code></b> (the 15th domain; coach-accurate form, measurable "done when")</summary>
+<br>
+
+**Strength:** squat · deadlift · bench · overhead press · row · pull-up & push-up progressions · progressive overload · **Cardio:** run a 5k → marathon · zone-2 · HIIT · rowing · pacing · **Mobility:** full-body & targeted stretches · dynamic warmups · hip/ankle/thoracic mobility · **Home & bodyweight:** no-equipment circuits · calisthenics · band & kettlebell routines · hotel-room workouts · **Sports skills:** basketball · tennis · golf · swimming · cycling · skating · **Recovery:** soreness · injury prevention · protein/sleep/hydration · rest days · **Planning:** goal-setting · splits · tracking · fat-loss/muscle-gain plans · building the habit
+
+</details>
+
+<details>
 <summary><b>🚇 Physical & services — <code>transit/</code> <code>travel/</code> <code>communication/</code> <code>government/</code> <code>healthcare/</code> <code>housing/</code></b></summary>
 <br>
 
@@ -212,7 +220,7 @@ ride a subway · take a bus · hail a rideshare · navigate with maps · book a 
 <a id="packs"></a>
 ## 🎒 Packs — grab a whole kit, install it as a skill
 
-Nobody assembles a scam-defense toolkit from a 2,300-recipe index. A [**pack**](packs/) is a curated, cross-domain kit for one real situation — and it installs into your agent as a self-contained **skill** in one command:
+Nobody assembles a scam-defense toolkit from a 2,500-recipe index. A [**pack**](packs/) is a curated, cross-domain kit for one real situation — and it installs into your agent as a self-contained **skill** in one command:
 
 ```bash
 python3 scripts/build_skills.py scam-and-fraud-defense   # → packs/skills/.../SKILL.md
@@ -256,7 +264,7 @@ Export the planning traces with `python3 scripts/export.py --format journeys`. N
 <a id="roadmap"></a>
 ## 🗺️ Roadmap
 
-The corpus spans **2337 recipes across all 14 domains** and keeps growing. Where help lands hardest:
+The corpus spans **2537 recipes across all 15 domains** and keeps growing. Where help lands hardest:
 
 - [ ] Locale variant packs: `jp-tokyo`, `cn-beijing`, `de-berlin`, and yours
 - [ ] `reviewed` and `verified` promotions (agent-executability evidence; see CONTRIBUTING)
