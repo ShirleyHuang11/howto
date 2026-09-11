@@ -8,10 +8,10 @@
 
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Recipes](https://img.shields.io/badge/recipes-2537-brightgreen.svg)](INDEX.md)
+[![Recipes](https://img.shields.io/badge/recipes-2737-brightgreen.svg)](INDEX.md)
 [![Journeys](https://img.shields.io/badge/journeys-4-00b3b3.svg)](journeys/)
 [![Packs](https://img.shields.io/badge/packs-8-ff8c00.svg)](packs/)
-[![Domains](https://img.shields.io/badge/domains-15-blueviolet.svg)](domains.json)
+[![Domains](https://img.shields.io/badge/domains-16-blueviolet.svg)](domains.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](CONTRIBUTING.md)
 
 [**Use it**](#use) · [**Why**](#why) · [**What's inside**](#inside) · [**Packs**](#packs) · [**Journeys**](#journeys) · [**Quick start**](#quickstart) · [**Roadmap**](#roadmap) · [**Contributing**](#contributing) · [**Citing**](#citing)
@@ -204,6 +204,16 @@ create an account · log in · enable 2FA · recover a password · delete an acc
 </details>
 
 <details>
+<summary><b>💻 Software engineering — <code>engineering/</code></b> (the 16th domain — the coding-agent workflows, agent-executable with a programmatic "done when")</summary>
+<br>
+
+The tasks a Claude Code / Cursor agent runs all day, each with a *checkable* Verification (tests exit 0, CI green, `curl` 200, migration applied):
+
+**Version control:** open & review a PR · resolve a merge conflict · rebase · bisect a regression · recover a lost commit · **Testing:** write a failing test first · mocks & fixtures · coverage · fix a flaky test · **Debugging:** read a stack trace · reproduce a bug · memory leaks · race conditions · production-only bugs · **CI/CD:** pipelines · caching · matrix builds · required checks · deploy-on-merge · **Deploy:** zero-downtime · blue-green · canary · rollback · feature flags · safe DB migrations · **Database:** SQL & joins · schema design · indexes · backup/restore · prevent SQL injection · **API:** REST/GraphQL · OAuth2 · rate limits · retries with backoff · webhook signature verification · **Containers:** Dockerfiles · compose · Kubernetes · healthchecks · debug a crashloop · **Observability:** structured logs · tracing · SLOs · alerting · postmortems · **Security:** secret handling · key rotation · dependency scanning · XSS/CORS · JWTs. Destructive ops (prod migrations, key rotation, history rewrite) are marked ⚠️ and `risk: high`.
+
+</details>
+
+<details>
 <summary><b>🚇 Physical & services — <code>transit/</code> <code>travel/</code> <code>communication/</code> <code>government/</code> <code>healthcare/</code> <code>housing/</code></b></summary>
 <br>
 
@@ -220,7 +230,7 @@ ride a subway · take a bus · hail a rideshare · navigate with maps · book a 
 <a id="packs"></a>
 ## 🎒 Packs — grab a whole kit, install it as a skill
 
-Nobody assembles a scam-defense toolkit from a 2,500-recipe index. A [**pack**](packs/) is a curated, cross-domain kit for one real situation — and it installs into your agent as a self-contained **skill** in one command:
+Nobody assembles a scam-defense toolkit from a 2,700-recipe index. A [**pack**](packs/) is a curated, cross-domain kit for one real situation — and it installs into your agent as a self-contained **skill** in one command:
 
 ```bash
 python3 scripts/build_skills.py scam-and-fraud-defense   # → packs/skills/.../SKILL.md
@@ -264,7 +274,7 @@ Export the planning traces with `python3 scripts/export.py --format journeys`. N
 <a id="roadmap"></a>
 ## 🗺️ Roadmap
 
-The corpus spans **2537 recipes across all 15 domains** and keeps growing. Where help lands hardest:
+The corpus spans **2737 recipes across all 16 domains** and keeps growing. Where help lands hardest:
 
 - [ ] Locale variant packs: `jp-tokyo`, `cn-beijing`, `de-berlin`, and yours
 - [ ] `reviewed` and `verified` promotions (agent-executability evidence; see CONTRIBUTING)
