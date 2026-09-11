@@ -15,6 +15,10 @@
     "track": "physical",
     "description": "Exercise and physical training: strength and resistance work, cardio and running, mobility and flexibility, home and bodyweight workouts, sports skills, recovery and injury prevention, and training plans."
   },
+  "engineering": {
+    "track": "digital",
+    "description": "Software engineering workflows a coding agent runs end-to-end: version control, testing, debugging, CI/CD, deployment, databases, APIs, containers, observability, and security. Agent-executable with verifiable outcomes (tests pass, build green, deploy healthy)."
+  },
   "shopping": {
     "track": "digital",
     "description": "Commerce: comparing, purchasing, returning, refunds, price tracking."
