@@ -8,10 +8,10 @@
 
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Recipes](https://img.shields.io/badge/recipes-2737-brightgreen.svg)](INDEX.md)
+[![Recipes](https://img.shields.io/badge/recipes-2937-brightgreen.svg)](INDEX.md)
 [![Journeys](https://img.shields.io/badge/journeys-4-00b3b3.svg)](journeys/)
 [![Packs](https://img.shields.io/badge/packs-8-ff8c00.svg)](packs/)
-[![Domains](https://img.shields.io/badge/domains-16-blueviolet.svg)](domains.json)
+[![Domains](https://img.shields.io/badge/domains-17-blueviolet.svg)](domains.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](CONTRIBUTING.md)
 
 [**Use it**](#use) · [**Why**](#why) · [**What's inside**](#inside) · [**Packs**](#packs) · [**Journeys**](#journeys) · [**Quick start**](#quickstart) · [**Roadmap**](#roadmap) · [**Contributing**](#contributing) · [**Citing**](#citing)
@@ -214,6 +214,16 @@ The tasks a Claude Code / Cursor agent runs all day, each with a *checkable* Ver
 </details>
 
 <details>
+<summary><b>🤖 AI & LLM engineering — <code>ai/</code></b> (the 17th domain: how to build LLM apps, RAG systems, and agents)</summary>
+<br>
+
+Each of the 200 recipes carries a checkable Verification: an eval clears its threshold, structured output validates against a schema, or retrieval returns the gold document in the top k.
+
+**Prompting:** system prompts · few-shot · chain-of-thought · structured JSON output · prompt-injection defense · **RAG:** chunking · embeddings · vector databases · hybrid search · reranking · answer faithfulness · **Agents:** tool-calling · ReAct loops · memory · planning · MCP servers · guardrails · human-in-the-loop · **Evals:** eval sets · LLM-as-judge · regression evals · contamination checks · significance tests · **Fine-tuning:** dataset prep · LoRA · DPO · quantization · the fine-tune vs RAG vs prompt decision · **LLMOps:** API calls · streaming · caching · model routing · cost caps · PII redaction · **Data:** cleaning · labeling · drift detection · pipelines · anonymization · **Multimodal:** captioning · OCR · transcription · image generation and QA · **Safety:** red-teaming · jailbreak filters · runtime injection detection · output moderation. Steps that send data to a third-party API or deploy to production are marked ⚠️ and `risk: high`.
+
+</details>
+
+<details>
 <summary><b>🚇 Physical & services — <code>transit/</code> <code>travel/</code> <code>communication/</code> <code>government/</code> <code>healthcare/</code> <code>housing/</code></b></summary>
 <br>
 
@@ -230,7 +240,7 @@ ride a subway · take a bus · hail a rideshare · navigate with maps · book a 
 <a id="packs"></a>
 ## 🎒 Packs — grab a whole kit, install it as a skill
 
-Nobody assembles a scam-defense toolkit from a 2,700-recipe index. A [**pack**](packs/) is a curated, cross-domain kit for one real situation — and it installs into your agent as a self-contained **skill** in one command:
+Nobody assembles a scam-defense toolkit from a 2,900-recipe index. A [**pack**](packs/) is a curated, cross-domain kit for one real situation — and it installs into your agent as a self-contained **skill** in one command:
 
 ```bash
 python3 scripts/build_skills.py scam-and-fraud-defense   # → packs/skills/.../SKILL.md
@@ -274,7 +284,7 @@ Export the planning traces with `python3 scripts/export.py --format journeys`. N
 <a id="roadmap"></a>
 ## 🗺️ Roadmap
 
-The corpus spans **2737 recipes across all 16 domains** and keeps growing. Where help lands hardest:
+The corpus spans **2937 recipes across all 17 domains** and keeps growing. Where help lands hardest:
 
 - [ ] Locale variant packs: `jp-tokyo`, `cn-beijing`, `de-berlin`, and yours
 - [ ] `reviewed` and `verified` promotions (agent-executability evidence; see CONTRIBUTING)
