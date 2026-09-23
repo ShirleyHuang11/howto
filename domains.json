@@ -19,6 +19,10 @@
     "track": "digital",
     "description": "Software engineering workflows a coding agent runs end-to-end: version control, testing, debugging, CI/CD, deployment, databases, APIs, containers, observability, and security. Agent-executable with verifiable outcomes (tests pass, build green, deploy healthy)."
   },
+  "ai": {
+    "track": "digital",
+    "description": "AI and LLM application engineering: prompting, retrieval-augmented generation, tool-calling agents, evaluation, fine-tuning, LLMOps, data preparation, multimodal, and safety. Agent-executable with verifiable outcomes (eval passes, retrieval hits, structured output validates)."
+  },
   "shopping": {
     "track": "digital",
     "description": "Commerce: comparing, purchasing, returning, refunds, price tracking."
